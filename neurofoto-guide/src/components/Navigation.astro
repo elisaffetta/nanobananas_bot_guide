@@ -1,6 +1,23 @@
 ---
 // Navigation.astro
-const navSections = [
+interface NavSubItem {
+  href: string;
+  label: string;
+}
+
+interface NavItem {
+  href: string;
+  label: string;
+  icon: string;
+  subItems?: NavSubItem[];
+}
+
+interface NavSection {
+  title: string;
+  items: NavItem[];
+}
+
+const navSections: NavSection[] = [
   {
     title: '📖 Основы',
     items: [
@@ -18,9 +35,36 @@ const navSections = [
   {
     title: '✨ Библиотека промтов',
     items: [
-      { href: '#prompts-women', label: 'Женские промты', icon: '👩' },
-      { href: '#prompts-men', label: 'Мужские промты', icon: '👨' },
-      { href: '#prompts-kids', label: 'Детские промты', icon: '👶' },
+      { 
+        href: '#prompts-women', 
+        label: 'Женские промты', 
+        icon: '👩🏼',
+        subItems: [
+          { href: '#women-business', label: 'Бизнес & Резюме' },
+          { href: '#women-social', label: 'Соцсети' },
+          { href: '#women-urban', label: 'Город' },
+          { href: '#women-nature', label: 'Природа' },
+        ]
+      },
+      { 
+        href: '#prompts-men', 
+        label: 'Мужские промты', 
+        icon: '👨🏼', 
+        subItems: [
+          { href: '#men-business', label: 'Бизнес & Карьера' },
+          { href: '#men-lifestyle', label: 'Лайфстайл' },
+          { href: '#men-style', label: 'Стиль & Атмосфера' },
+        ]
+      },
+      { 
+        href: '#prompts-kids', 
+        label: 'Детские промты', 
+        icon: '👶🏼',
+        subItems: [
+          { href: '#kids-fantasy', label: 'Праздники & Магия' },
+          { href: '#kids-daily', label: 'Хобби & Жизнь' },
+        ]
+      },
     ]
   },
   {
@@ -47,14 +91,40 @@ const navSections = [
         </h4>
         <div class="space-y-0.5">
           {section.items.map(item => (
-            <a 
-              href={item.href}
-              class="nav-link group flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
-            >
-              <span class="text-lg group-hover:scale-110 transition-transform duration-200">{item.icon}</span>
-              <span class="flex-1">{item.label}</span>
-              <span class="nav-indicator opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-            </a>
+            <div class="nav-item-wrapper">
+              <div class="flex items-center gap-1">
+                <a 
+                  href={item.href}
+                  class="nav-link group flex-1 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
+                >
+                  <span class="text-lg group-hover:scale-110 transition-transform duration-200">{item.icon}</span>
+                  <span class="flex-1">{item.label}</span>
+                </a>
+                {item.subItems && (
+                  <button 
+                    class="accordion-toggle w-8 h-8 flex items-center justify-center rounded-md hover:bg-muted text-muted-foreground transition-colors"
+                    aria-label="Раскрыть раздел"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-200">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </button>
+                )}
+              </div>
+              
+              {item.subItems && (
+                <div class="nav-submenu hidden pl-9 pr-2 space-y-0.5 overflow-hidden transition-all duration-300">
+                  {item.subItems.map(sub => (
+                    <a 
+                      href={sub.href}
+                      class="block rounded-md px-2 py-1 text-xs text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+                    >
+                      {sub.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
@@ -76,25 +146,66 @@ const navSections = [
 <script>
 // Intersection Observer for active section highlighting
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav-link, .nav-submenu a');
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+      // Deactivate all
       navLinks.forEach(link => {
           link.classList.remove('active', 'text-foreground', 'bg-muted');
           link.classList.add('text-muted-foreground');
+          
+          // Reset main link styles if it's a submenu link
+          if (link.classList.contains('nav-link')) {
+             link.classList.remove('text-muted-foreground'); // nav-link handles its own color mostly via css but let's be safe
+          }
       });
+      
       const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
       if (activeLink) {
         activeLink.classList.remove('text-muted-foreground');
-        activeLink.classList.add('active', 'text-foreground', 'bg-muted');
+        
+        if (activeLink.classList.contains('nav-link')) {
+            activeLink.classList.add('active', 'text-foreground', 'bg-muted');
+        } else {
+            // It's a submenu link
+            activeLink.classList.add('text-foreground', 'bg-muted/50', 'font-medium');
+            
+            // Also highlight parent? Maybe later.
+            // Open parent accordion if closed
+            const submenu = activeLink.closest('.nav-submenu');
+            if (submenu && submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                const toggle = submenu.previousElementSibling?.querySelector('.accordion-toggle');
+                if (toggle) {
+                    toggle.querySelector('svg')?.classList.add('rotate-180');
+                }
+            }
+        }
       }
     }
   });
 }, { threshold: 0.2, rootMargin: "-20% 0px -50% 0px" });
 
 sections.forEach(section => observer.observe(section));
+
+// Accordion functionality
+document.querySelectorAll('.accordion-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const wrapper = toggle.closest('.nav-item-wrapper');
+        const submenu = wrapper?.querySelector('.nav-submenu');
+        const icon = toggle.querySelector('svg');
+        
+        if (submenu && icon) {
+            submenu.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    });
+});
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -105,7 +216,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const target = document.querySelector(href);
       if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          // Update URL without jump
           history.pushState(null, '', href);
       }
     }
