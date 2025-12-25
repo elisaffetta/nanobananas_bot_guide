@@ -1,0 +1,1037 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import PromptCard from '../components/PromptCard.astro';
+import Badge from '../components/Badge.astro';
+import Navigation from '../components/Navigation.astro';
+
+// Content Data could be moved to content collections later, but for now we inline it as requested
+---
+
+<MainLayout 
+  title="Нейрофотосессия: Полный гайд 2025 | Nano Banana AI" 
+  description="Превратите обычное селфи в профессиональное фото за 30 секунд. 100 готовых промтов."
+>
+  <div slot="header-actions">
+     <a href="https://t.me/nanobananas_bot" target="_blank" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2">
+       Открыть Бота 🤖
+     </a>
+  </div>
+
+  <div slot="sidebar">
+    <Navigation />
+  </div>
+
+  <!-- INTRO SECTION -->
+  <section id="intro" class="scroll-mt-24 mb-16 space-y-6">
+    <div class="space-y-4">
+      <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        Нейрофотосессия: Полный гайд
+      </h1>
+      <p class="text-xl text-muted-foreground leading-relaxed">
+        Превратите обычное селфи в профессиональную фотосессию за 30 секунд. 
+        Экономьте тысячи рублей на фотографах.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
+      <!-- Card 1: Price -->
+      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-green-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-green-500/50">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-4xl">💸</div>
+            <div class="text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">Экономия</div>
+          </div>
+          <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent leading-tight">Экономия</div>
+          <div class="text-sm text-muted-foreground font-medium">Сэкономьте деньги на фотосессиях и создании контента</div>
+        </div>
+      </div>
+
+      <!-- Card 2: Speed -->
+      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-blue-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-blue-500/50">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-4xl">⚡</div>
+            <div class="text-xs font-semibold text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full">Скорость</div>
+          </div>
+          <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent leading-tight">Быстро</div>
+          <div class="text-sm text-muted-foreground font-medium">Создавайте контент за 30 секунд вместо часов съемки</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Location -->
+      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-purple-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-purple-500/50">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-4xl">🌍</div>
+            <div class="text-xs font-semibold text-purple-500 bg-purple-500/10 px-2 py-1 rounded-full">Свобода</div>
+          </div>
+          <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight">Везде</div>
+          <div class="text-sm text-muted-foreground font-medium">Окажитесь в любой локации планеты сидя дома</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Face Preservation -->
+      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-primary/50">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative z-10">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-4xl">💯</div>
+            <div class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">Точность</div>
+          </div>
+          <div class="text-3xl font-extrabold mb-2 bg-gradient-to-r from-yellow-400 to-orange-600 bg-clip-text text-transparent">96% Лицо</div>
+          <div class="text-sm text-muted-foreground font-medium">Максимальное сохранение черт</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES SECTION -->
+  <SectionHeader id="cases" title="Зачем вам нейрофотосессия?">
+    <div class="grid gap-6 md:grid-cols-2 mt-6">
+      <div class="rounded-xl border bg-card p-6 shadow-sm">
+        <Badge variant="secondary" class="mb-2">Кейс #1</Badge>
+        <h3 class="text-lg font-bold mb-2">Обновить фото для резюме</h3>
+        <p class="text-muted-foreground text-sm">Старое фото не внушает доверия? Сделайте профессиональный деловой портрет в костюме за 1 минуту.</p>
+      </div>
+      <div class="rounded-xl border bg-card p-6 shadow-sm">
+        <Badge variant="secondary" class="mb-2">Кейс #2</Badge>
+        <h3 class="text-lg font-bold mb-2">Аватарки для соцсетей</h3>
+        <p class="text-muted-foreground text-sm">Разные стили для разных площадок: яркий для ВК, строгий для Telegram, эстетичный для Instagram.</p>
+      </div>
+      <div class="rounded-xl border bg-card p-6 shadow-sm">
+        <Badge variant="secondary" class="mb-2">Кейс #3</Badge>
+        <h3 class="text-lg font-bold mb-2">Примерить новый образ</h3>
+        <p class="text-muted-foreground text-sm">Блондинка или брюнетка? Короткая стрижка? Посмотрите на себя ДО похода к стилисту.</p>
+      </div>
+      <div class="rounded-xl border bg-card p-6 shadow-sm">
+        <Badge variant="secondary" class="mb-2">Кейс #4</Badge>
+        <h3 class="text-lg font-bold mb-2">Фото из путешествий</h3>
+        <p class="text-muted-foreground text-sm">Фото на фоне Эйфелевой башни без билета в Париж. Идеально для контента.</p>
+      </div>
+    </div>
+  </SectionHeader>
+
+  <!-- FUNCTIONALITY SECTION -->
+  <SectionHeader id="functionality" title="Что умеет наш бот">
+    <div class="space-y-12">
+      
+      <!-- AI Models Section -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-3xl">🤖</span>
+          <span>Доступные нейросети</span>
+        </h3>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- Nano Banana Regular -->
+          <div class="rounded-xl border-2 border-primary/20 p-6 bg-card relative overflow-hidden hover:border-primary/40 transition-all">
+            <div class="absolute top-0 right-0 bg-primary/10 text-primary px-3 py-1 text-xs font-bold rounded-bl-lg">ПОПУЛЯРНАЯ</div>
+            <h4 class="text-xl font-bold mb-3">Nano Banana (Обычная)</h4>
+            <p class="text-sm text-muted-foreground mb-4">Флагманская модель Google Gemini 2.5 Flash Image. Идеально сохраняет черты лица, быстро работает (10-15 секунд), подходит для личных фото и экспериментов.</p>
+            <div class="flex items-center gap-2 text-xs text-muted-foreground">
+              <span class="bg-green-500/10 text-green-500 px-2 py-1 rounded">Быстро</span>
+              <span class="bg-blue-500/10 text-blue-500 px-2 py-1 rounded">Точность 96%</span>
+            </div>
+          </div>
+
+          <!-- Nano Banana PRO -->
+          <div class="rounded-xl border-2 border-purple-500/30 p-6 bg-card relative overflow-hidden shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:border-purple-500/50 transition-all">
+            <div class="absolute top-0 right-0 bg-purple-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">PRO</div>
+            <h4 class="text-xl font-bold mb-3 text-purple-400">Nano Banana PRO</h4>
+            <p class="text-sm text-muted-foreground mb-4">Усиленная версия с максимальной точностью. Безошибочно генерирует русский текст на изображениях, интегрирована с Google Search для актуальной информации. Идеальна для резюме, карточек товаров и бизнес-задач.</p>
+            <div class="flex items-center gap-2 text-xs text-muted-foreground">
+              <span class="bg-purple-500/10 text-purple-400 px-2 py-1 rounded">Текст на фото</span>
+              <span class="bg-blue-500/10 text-blue-400 px-2 py-1 rounded">Google Search</span>
+            </div>
+          </div>
+
+          <!-- Seedream v4 -->
+          <div class="rounded-xl border-2 border-pink-500/20 p-6 bg-card relative overflow-hidden hover:border-pink-500/40 transition-all">
+            <h4 class="text-xl font-bold mb-3 text-pink-400">Seedream v4</h4>
+            <p class="text-sm text-muted-foreground mb-4">Специализируется на художественных и креативных стилях. Отлично подходит для создания арт-портретов и необычных концепций.</p>
+            <div class="flex items-center gap-2 text-xs text-muted-foreground">
+              <span class="bg-pink-500/10 text-pink-400 px-2 py-1 rounded">Креатив</span>
+              <span class="bg-orange-500/10 text-orange-400 px-2 py-1 rounded">Арт-стили</span>
+            </div>
+          </div>
+
+          <!-- Qwen Image -->
+          <div class="rounded-xl border-2 border-cyan-500/20 p-6 bg-card relative overflow-hidden hover:border-cyan-500/40 transition-all">
+            <h4 class="text-xl font-bold mb-3 text-cyan-400">Qwen Image</h4>
+            <p class="text-sm text-muted-foreground mb-4">Альтернативная модель с уникальной стилистикой. Попробуйте для разнообразия результатов.</p>
+            <div class="flex items-center gap-2 text-xs text-muted-foreground">
+              <span class="bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded">Альтернатива</span>
+              <span class="bg-teal-500/10 text-teal-400 px-2 py-1 rounded">Уникальный стиль</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-3xl">✨</span>
+          <span>Что можно делать с фотографиями</span>
+        </h3>
+        
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 p-5 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all">
+            <div class="text-2xl mb-2">🎨</div>
+            <h4 class="font-bold mb-2">Генерация с нуля</h4>
+            <p class="text-sm text-muted-foreground">Создавайте любые изображения по текстовому описанию, даже без исходного фото.</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-5 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all">
+            <div class="text-2xl mb-2">✂️</div>
+            <h4 class="font-bold mb-2">Редактирование фото</h4>
+            <p class="text-sm text-muted-foreground">Меняйте одежду, фон, причёску, добавляйте или убирайте объекты. Лицо сохраняется на 98+%!</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 p-5 rounded-xl border border-green-500/20 hover:border-green-500/40 transition-all">
+            <div class="text-2xl mb-2">🔗</div>
+            <h4 class="font-bold mb-2">Объединение изображений</h4>
+            <p class="text-sm text-muted-foreground">Совместите несколько фото: одежду с одного, фон с другого, и свой портрет.</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 p-5 rounded-xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
+            <div class="text-2xl mb-2">📐</div>
+            <h4 class="font-bold mb-2">Разные форматы</h4>
+            <p class="text-sm text-muted-foreground">JPG, PNG, WebP. Квадратные для соцсетей, вертикальные для сторис, горизонтальные для баннеров.</p>
+          </div>
+
+          <div class="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 p-5 rounded-xl border border-yellow-500/20 hover:border-yellow-500/40 transition-all">
+            <div class="text-2xl mb-2">🎯</div>
+            <h4 class="font-bold mb-2">Баннеры и креативы</h4>
+            <p class="text-sm text-muted-foreground">Рекламные баннеры, обложки YouTube, посты для соцсетей, карточки товаров для маркетплейсов.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prompt Library Section -->
+      <div class="glass-card p-8 rounded-2xl border-2 border-primary/30">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-3xl">💎</span>
+          <span>Библиотека готовых решений</span>
+        </h3>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-primary/10 text-primary px-4 py-2 rounded-lg font-bold text-2xl">250+</div>
+              <div>
+                <h4 class="font-bold">Готовых промтов</h4>
+                <p class="text-sm text-muted-foreground">В мини-аппке бота</p>
+              </div>
+            </div>
+            <p class="text-sm text-muted-foreground mb-3">Просто выбирайте категорию (стили, фоны, портреты, фотосессии) и копируйте готовый промт.</p>
+            
+            <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-lg mb-3">
+              <h5 class="font-semibold text-sm mb-2 text-blue-400">📱 Как найти промты:</h5>
+              <ol class="text-xs text-muted-foreground space-y-1.5">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">1.</span>
+                  <span>Запустите бота</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">2.</span>
+                  <span>Нажмите кнопку <strong>"Идеи и тренды"</strong></span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">3.</span>
+                  <span>Выберите понравившееся фото</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">4.</span>
+                  <span>Скопируйте промт</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">5.</span>
+                  <span>Вставьте промт + ваше фото в бота</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 font-bold">✓</span>
+                  <span class="text-green-500 font-semibold">Получаете нейрофото!</span>
+                </li>
+              </ol>
+            </div>
+            
+            <div class="bg-green-500/10 text-green-500 px-3 py-2 rounded-lg text-sm font-semibold inline-block">
+              ✓ Скопировано 65,000+ раз!
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+            <h4 class="font-bold mb-3 flex items-center gap-2">
+              <span>🛠️</span>
+              <span>Конструктор промтов</span>
+            </h4>
+            <p class="text-sm text-muted-foreground mb-4">Не знаете как написать промт? Наш конструктор поможет! Просто выбирайте:</p>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-500">💡</span>
+                <span class="text-muted-foreground">Тип освещения (золотой час, студийный свет, неон...)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-500">📍</span>
+                <span class="text-muted-foreground">Локацию (кафе, парк, студия, улица...)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-purple-500">📷</span>
+                <span class="text-muted-foreground">Параметры камеры (портрет, полный рост, крупный план...)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-pink-500">😊</span>
+                <span class="text-muted-foreground">Настроение (радость, уверенность, расслабленность...)</span>
+              </li>
+            </ul>
+            <p class="text-xs text-muted-foreground mt-4 italic">И получаете профессиональный промт с первого раза!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Section -->
+      <div class="bg-gradient-to-br from-primary/20 via-accent/10 to-purple-500/20 p-8 rounded-2xl border-2 border-primary/40">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-3xl">💰</span>
+          <span>Стоимость</span>
+        </h3>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="bg-background/70 p-6 rounded-xl">
+            <div class="text-4xl font-extrabold text-primary mb-2">От 150₽</div>
+            <p class="text-muted-foreground mb-4">Доступны различные пакеты генераций на любой бюджет. Чем больше пакет, тем выгоднее цена за одно фото.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">Пробные пакеты</span>
+              <span class="bg-green-500/10 text-green-500 px-3 py-1 rounded-full text-xs font-semibold">Выгодные большие пакеты</span>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 p-6 rounded-xl border-2 border-green-500/40">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-4xl">🎁</span>
+              <div>
+                <h4 class="text-xl font-bold text-green-400">Первые генерации бесплатно!</h4>
+                <p class="text-sm text-muted-foreground">Оцените качество перед покупкой</p>
+              </div>
+            </div>
+            <a href="https://t.me/nanobananas_bot" target="_blank" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold transition-all mt-3">
+              <span>Попробовать бесплатно</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </SectionHeader>
+
+  <!-- RULES SECTION - COMPREHENSIVE BEST PRACTICES -->
+  <SectionHeader id="rules" title="🎯 Полное руководство по созданию промтов">
+    <div class="space-y-8">
+      
+      <!-- Golden Rules -->
+      <div class="glass-card p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">🏆</span>
+          <span>Золотые правила сохранения лица</span>
+        </h3>
+        
+        <div class="space-y-6">
+          <div class="bg-background/50 p-6 rounded-xl border border-border">
+            <h4 class="text-lg font-bold text-primary mb-3">Правило #1: ВСЕГДА начинайте с сохранения лица</h4>
+            <p class="text-muted-foreground mb-3">Обязательная фраза в начале каждого промта:</p>
+            <div class="bg-muted p-4 rounded-lg font-mono text-sm border-l-4 border-primary">
+              точно сохрани ВСЕ черты лица: разрез глаз, форму носа, губы, овал лица, брови, подбородок, прическу
+            </div>
+            <div class="mt-4 text-sm text-muted-foreground">
+              <p class="font-semibold mb-2">Почему это критично:</p>
+              <ul class="list-disc list-inside space-y-1 ml-2">
+                <li>Первые 10 слов промта имеют максимальный вес</li>
+                <li>Модель обрабатывает инструкции последовательно</li>
+                <li>Без явного указания AI может "улучшить" черты лица</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-background/50 p-6 rounded-xl border border-border">
+            <h4 class="text-lg font-bold text-primary mb-3">Правило #2: Завершайте промт напоминанием</h4>
+            <p class="text-muted-foreground mb-3">Обязательная фраза в конце:</p>
+            <div class="bg-muted p-4 rounded-lg font-mono text-sm border-l-4 border-primary">
+              не меняй черты лица совсем
+            </div>
+            <div class="mt-4 text-sm text-muted-foreground">
+              <p class="font-semibold mb-2">Зачем дублировать:</p>
+              <ul class="list-disc list-inside space-y-1 ml-2">
+                <li>Модель анализирует промт с двух сторон — начало и конец имеют больший приоритет</li>
+                <li>Двойное указание создает "рамку" для сохранения идентичности</li>
+                <li>Снижает вероятность "дрейфа" при сложных промтах</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-background/50 p-6 rounded-xl border border-border">
+            <h4 class="text-lg font-bold text-primary mb-3">Правило #3: Качество исходного фото = качество результата</h4>
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+                <p class="font-bold text-green-400 mb-2">✅ Требования к исходнику:</p>
+                <ul class="text-sm space-y-1 text-muted-foreground">
+                  <li>• Хорошее освещение</li>
+                  <li>• Четкие черты лица</li>
+                  <li>• Фото анфас или 3/4</li>
+                  <li>• Минимум 512x512px</li>
+                  <li>• Лицо занимает 30%+ кадра</li>
+                </ul>
+              </div>
+              <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+                <p class="font-bold text-red-400 mb-2">❌ Избегайте:</p>
+                <ul class="text-sm space-y-1 text-muted-foreground">
+                  <li>• Сильные тени на лице</li>
+                  <li>• Солнечные очки, маски</li>
+                  <li>• Руки перед лицом</li>
+                  <li>• Размытые фото</li>
+                  <li>• Профильные снимки</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prompt Structure -->
+      <div class="glass-card p-8 rounded-2xl border border-border">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">📝</span>
+          <span>Структура идеального промта</span>
+        </h3>
+        
+        <div class="space-y-6">
+          <div class="bg-muted/50 p-6 rounded-xl">
+            <h4 class="text-lg font-bold mb-4">Базовая формула (для простых задач)</h4>
+            <div class="bg-background p-4 rounded-lg border-l-4 border-primary font-mono text-sm">
+              [1. СОХРАНЕНИЕ ЛИЦА] + [2. ОПИСАНИЕ СЦЕНЫ] + [3. НАПОМИНАНИЕ]
+            </div>
+            <div class="mt-4 bg-background/50 p-4 rounded-lg text-sm">
+              <p class="font-semibold mb-2">Пример:</p>
+              <pre class="text-muted-foreground whitespace-pre-wrap">точно сохрани ВСЕ черты лица.
+
+Девушка в элегантном черном платье стоит на фоне Эйфелевой башни на закате,
+мягкий золотой свет, профессиональное фото, 50mm f/1.8.
+
+не меняй черты лица совсем</pre>
+            </div>
+          </div>
+
+          <div class="bg-muted/50 p-6 rounded-xl">
+            <h4 class="text-lg font-bold mb-4">Расширенная формула (для сложных задач)</h4>
+            <div class="bg-background p-4 rounded-lg border-l-4 border-accent font-mono text-sm">
+              [1. СОХРАНЕНИЕ] + [2. ПОЗА] + [3. ОДЕЖДА] + [4. ФОН] + [5. ТЕХНИКА] + [6. НАСТРОЕНИЕ] + [7. НАПОМИНАНИЕ]
+            </div>
+          </div>
+
+          <div class="bg-yellow-500/10 p-6 rounded-xl border-2 border-yellow-500/30">
+            <h4 class="text-lg font-bold mb-4 text-yellow-400">⚡ ВАЖНО: Nano Banana любит короткие промты!</h4>
+            <p class="text-sm text-muted-foreground mb-4">Оптимальная длина: <span class="font-bold text-foreground">30-70 слов</span> (не считая инструкций по сохранению лица)</p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+                <p class="font-bold text-red-400 mb-2">❌ ПЛОХО (слишком подробно):</p>
+                <p class="text-xs text-muted-foreground">Девушка сидит на деревянной скамейке в красивом парке с зелеными деревьями и цветущими кустами роз, она одета в легкое летнее платье светло-голубого цвета с цветочным принтом...</p>
+              </div>
+              <div class="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+                <p class="font-bold text-green-400 mb-2">✅ ХОРОШО (концентрированно):</p>
+                <p class="text-xs text-muted-foreground">сидит на скамейке в парке, голубое летнее платье, книга в руках, естественный свет, 50mm f/2.0, атмосфера умиротворения.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model Differences -->
+      <div class="glass-card p-8 rounded-2xl border border-border">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">🔧</span>
+          <span>Nano Banana vs Nano Banana PRO</span>
+        </h3>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-xl border-2 border-primary/30">
+            <h4 class="text-xl font-bold mb-4 text-primary">Nano Banana (обычная)</h4>
+            <div class="space-y-3 text-sm">
+              <div class="bg-background/50 p-3 rounded-lg">
+                <p class="font-semibold mb-1">Соотношение:</p>
+                <p class="text-muted-foreground">1 генерация = 1 фото</p>
+              </div>
+              <div>
+                <p class="font-semibold mb-2 text-green-400">✅ Когда использовать:</p>
+                <ul class="space-y-1 text-muted-foreground ml-4">
+                  <li>• Быстрые правки</li>
+                  <li>• Тестирование идей</li>
+                  <li>• Смена простых элементов</li>
+                  <li>• Когда важна скорость</li>
+                </ul>
+              </div>
+              <div>
+                <p class="font-semibold mb-2 text-red-400">❌ Ограничения:</p>
+                <ul class="space-y-1 text-muted-foreground ml-4">
+                  <li>• Неточность в мелких деталях</li>
+                  <li>• Русский текст с ошибками</li>
+                  <li>• Сложные композиции требуют 2-3 попытки</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-500/10 to-purple-500/5 p-6 rounded-xl border-2 border-purple-500/30">
+            <h4 class="text-xl font-bold mb-4 text-purple-400">Nano Banana PRO</h4>
+            <div class="space-y-3 text-sm">
+              <div class="bg-background/50 p-3 rounded-lg">
+                <p class="font-semibold mb-1">Соотношение:</p>
+                <p class="text-muted-foreground">6 генераций = 1 фото (дороже!)</p>
+              </div>
+              <div>
+                <p class="font-semibold mb-2 text-green-400">✅ Когда использовать:</p>
+                <ul class="space-y-1 text-muted-foreground ml-4">
+                  <li>• Идеальный результат с первого раза</li>
+                  <li>• Работа с русским текстом</li>
+                  <li>• Сложные композиции</li>
+                  <li>• Коммерческие проекты</li>
+                  <li>• Карточки товаров WB/Ozon</li>
+                </ul>
+              </div>
+              <div>
+                <p class="font-semibold mb-2 text-purple-400">💎 Преимущества:</p>
+                <ul class="space-y-1 text-muted-foreground ml-4">
+                  <li>• Интеграция с Google Search</li>
+                  <li>• Безошибочный русский текст</li>
+                  <li>• Точное следование промту</li>
+                  <li>• Лучшая работа с деталями</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Mistakes -->
+      <div class="glass-card p-8 rounded-2xl border border-border">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">❌</span>
+          <span>Частые ошибки и решения</span>
+        </h3>
+        
+        <div class="space-y-4">
+          <div class="bg-muted/50 p-5 rounded-xl border-l-4 border-red-500">
+            <h4 class="font-bold text-red-400 mb-2">Ошибка #1: "Лицо изменилось после редактирования"</h4>
+            <p class="text-sm text-muted-foreground mb-2"><span class="font-semibold">Причина:</span> Забыли указать сохранение лица</p>
+            <p class="text-sm"><span class="font-semibold text-green-400">Решение:</span> ВСЕГДА используйте фразу про сохранение в начале и конце</p>
+          </div>
+
+          <div class="bg-muted/50 p-5 rounded-xl border-l-4 border-red-500">
+            <h4 class="font-bold text-red-400 mb-2">Ошибка #2: "Модель не понимает, что я хочу"</h4>
+            <p class="text-sm text-muted-foreground mb-2"><span class="font-semibold">Причина:</span> Промт слишком общий или противоречивый</p>
+            <div class="text-sm mt-3 space-y-2">
+              <p class="text-red-400">❌ "сделай красиво" / "винтажное фото в современном стиле"</p>
+              <p class="text-green-400">✅ "атмосфера 90-х, пленочное зерно, приглушенные цвета"</p>
+            </div>
+          </div>
+
+          <div class="bg-muted/50 p-5 rounded-xl border-l-4 border-red-500">
+            <h4 class="font-bold text-red-400 mb-2">Ошибка #3: "Результат размытый / низкого качества"</h4>
+            <p class="text-sm text-muted-foreground mb-2"><span class="font-semibold">Причина:</span> Исходное фото плохого качества или слишком много итераций</p>
+            <p class="text-sm"><span class="font-semibold text-green-400">Решение:</span> Используйте исходник высокого разрешения. После 3-4 правок начните новый чат.</p>
+          </div>
+
+          <div class="bg-muted/50 p-5 rounded-xl border-l-4 border-red-500">
+            <h4 class="font-bold text-red-400 mb-2">Ошибка #4: "Руки выглядят странно"</h4>
+            <p class="text-sm text-muted-foreground mb-2"><span class="font-semibold">Причина:</span> Руки — известная проблема всех AI-моделей</p>
+            <p class="text-sm"><span class="font-semibold text-green-400">Решение:</span> Явно опишите положение рук: "руки скрещены на груди" / "руки в карманах" / "руки не видны в кадре"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Techniques -->
+      <div class="glass-card p-8 rounded-2xl border border-border">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">🚀</span>
+          <span>Продвинутые техники</span>
+        </h3>
+        
+        <div class="space-y-6">
+          <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 p-6 rounded-xl border border-blue-500/30">
+            <h4 class="text-lg font-bold mb-3 text-blue-400">Техника #1: Метод коллажа для нескольких референсов</h4>
+            <p class="text-sm text-muted-foreground mb-3">Создайте коллаж в редакторе, разместите все референсы на одном изображении, подпишите каждый элемент.</p>
+            <div class="bg-background/50 p-3 rounded-lg text-sm font-mono">
+              точно сохрани черты лица с первого фото, одень её в платье со второго фото, помести на локацию с третьего фото
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/30">
+            <h4 class="text-lg font-bold mb-3 text-purple-400">Техника #2: Итеративное редактирование</h4>
+            <p class="text-sm text-muted-foreground mb-3">НЕ пытайтесь изменить всё сразу — работайте пошагово:</p>
+            <ol class="text-sm space-y-2 ml-4 list-decimal text-muted-foreground">
+              <li>Шаг 1: "смени только одежду, сохрани лицо и фон"</li>
+              <li>Шаг 2: "теперь смени фон, сохрани лицо и одежду"</li>
+              <li>Шаг 3: "добавь очки, сохрани всё остальное"</li>
+            </ol>
+          </div>
+
+          <div class="bg-gradient-to-r from-pink-500/10 to-red-500/10 p-6 rounded-xl border border-pink-500/30">
+            <h4 class="text-lg font-bold mb-3 text-pink-400">Техника #3: "Якорь консистентности"</h4>
+            <p class="text-sm text-muted-foreground">Для серии фото: сгенерируйте первое идеальное фото, сохраните его как "якорь", используйте для каждого следующего как референс лица.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Tips -->
+      <div class="bg-gradient-to-br from-primary/20 via-accent/10 to-purple-500/20 p-8 rounded-2xl border-2 border-primary/40">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">💡</span>
+          <span>Быстрые советы</span>
+        </h3>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">🎯 1. Качество > Количество</p>
+            <p class="text-muted-foreground">Лучше 1 идеальное фото, чем 10 посредственных. Потратьте время на точный промт.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">💾 2. Сохраняйте лучшие результаты</p>
+            <p class="text-muted-foreground">Используйте их как референсы для следующих генераций. Создайте папку с эталонами.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">💡 3. Экспериментируйте с освещением</p>
+            <p class="text-muted-foreground">"Золотой час", "студийный свет", "контровой свет" — меняет всё от настроения до реализма.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">🔄 4. Не бойтесь перегенерировать</p>
+            <p class="text-muted-foreground">Если результат не устраивает — перефразируйте промт и попробуйте снова. Иногда помогает просто поменять порядок слов.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">📚 5. Изучайте промты других</p>
+            <p class="text-muted-foreground">В боте есть 250+ готовых примеров. Анализируйте структуру успешных промтов.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">📝 6. Документируйте успешные промты</p>
+            <p class="text-muted-foreground">Создайте свою библиотеку работающих формул в Notes или Google Docs.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">⏰ 7. Время суток имеет значение</p>
+            <p class="text-muted-foreground">"Рассвет", "полдень", "закат", "синий час" — каждое время создаёт свою атмосферу.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">🎨 8. Используйте стили обработки</p>
+            <p class="text-muted-foreground">"Пленочное зерно", "HDR", "винтажная обработка" — добавляют характер фото.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">👥 9. Контекст важен</p>
+            <p class="text-muted-foreground">Добавляйте детали окружения: "книжные полки на фоне", "цветы в вазе" — создают реализм.</p>
+          </div>
+          <div class="bg-background/70 p-4 rounded-lg hover:bg-background/90 transition-colors">
+            <p class="font-semibold mb-2 flex items-center gap-2">🔍 10. Проверяйте детали</p>
+            <p class="text-muted-foreground">Перед публикацией увеличьте фото и проверьте руки, текст, мелкие элементы.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro Tips Section -->
+      <div class="mt-8 glass-card p-8 rounded-2xl border-2 border-accent/30">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-4xl">🎓</span>
+          <span>PRO советы для идеального результата</span>
+        </h3>
+        
+        <div class="space-y-4">
+          <div class="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="font-bold mb-2 text-blue-400">💎 Секрет профессиональных фото</h4>
+            <p class="text-sm text-muted-foreground">Всегда указывайте фокусное расстояние (35mm, 50mm, 85mm) и диафрагму (f/1.8, f/2.0). Это создаёт правильное боке и глубину резкости, как у профессионального фотографа.</p>
+          </div>
+
+          <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-5 rounded-xl border border-purple-500/20">
+            <h4 class="font-bold mb-2 text-purple-400">🎬 Кинематографичность</h4>
+            <p class="text-sm text-muted-foreground">Добавьте "cinematic lighting", "film grain", "anamorphic lens" для эффекта кино. Работает отлично для драматичных портретов.</p>
+          </div>
+
+          <div class="bg-gradient-to-r from-green-500/10 to-emerald-500/10 p-5 rounded-xl border border-green-500/20">
+            <h4 class="font-bold mb-2 text-green-400">📸 Композиция решает всё</h4>
+            <p class="text-sm text-muted-foreground">Используйте правило третей: "композиция по правилу третей", "золотое сечение". Или укажите конкретно: "крупный план", "средний план", "общий план".</p>
+          </div>
+
+          <div class="bg-gradient-to-r from-orange-500/10 to-red-500/10 p-5 rounded-xl border border-orange-500/20">
+            <h4 class="font-bold mb-2 text-orange-400">🌈 Цветовая палитра</h4>
+            <p class="text-sm text-muted-foreground">Укажите цветовую гамму: "тёплые тона", "холодная палитра", "пастельные цвета", "контрастные цвета". Это создаёт цельный образ.</p>
+          </div>
+
+          <div class="bg-gradient-to-r from-yellow-500/10 to-amber-500/10 p-5 rounded-xl border border-yellow-500/20">
+            <h4 class="font-bold mb-2 text-yellow-400">⚡ Скорость работы</h4>
+            <p class="text-sm text-muted-foreground">Создайте 3-5 базовых шаблонов для разных целей (деловое, casual, креатив). Просто меняйте детали — экономите время и получаете стабильный результат.</p>
+          </div>
+
+          <div class="bg-gradient-to-r from-pink-500/10 to-rose-500/10 p-5 rounded-xl border border-pink-500/20">
+            <h4 class="font-bold mb-2 text-pink-400">🎭 Эмоции и настроение</h4>
+            <p class="text-sm text-muted-foreground">Не забывайте про эмоции: "уверенный взгляд", "лёгкая улыбка", "задумчивое выражение", "радостное настроение". Это оживляет фото.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </SectionHeader>
+
+  <!-- PROMPT LIBRARY -->
+  <SectionHeader id="prompts-women" title="📚 Библиотека промтов">
+    <div class="mb-8 p-6 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl border border-primary/30">
+      <p class="text-lg font-semibold mb-2">Как использовать эти шаблоны:</p>
+      <ol class="text-sm text-muted-foreground space-y-1 ml-6 list-decimal">
+        <li>Скопируйте нужный промт кнопкой "Копировать"</li>
+        <li>Замените [переменные] на свои значения</li>
+        <li>Вставьте в бот @nanobananas_bot</li>
+        <li>Наслаждайтесь результатом!</li>
+      </ol>
+    </div>
+
+    <!-- Business & Resume -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="text-3xl">💼</span>
+        <span>Для резюме и деловых профилей</span>
+      </h3>
+      <div class="space-y-6">
+        <PromptCard
+          number={1}
+          title="Классический деловой портрет"
+          category="women"
+          description="Универсальный вариант для любой профессии."
+          prompt={`точно сохрани ВСЕ черты лица: разрез глаз, форму носа, губы, овал лица, брови, подбородок, прическу.
+
+профессиональный деловой портрет, в [цвет] костюме на нейтральном сером фоне,
+уверенный взгляд в камеру, мягкое студийное освещение, 85mm f/2.0, корпоративный стиль.
+
+не меняй черты лица совсем`}
+        />
+
+        <PromptCard
+          number={2}
+          title="Для HeadHunter / hh.ru"
+          category="women"
+          description="Специально для российских HR-платформ."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+деловое фото для резюме, [специальность], опрятная одежда, белый или светло-серый фон,
+естественная дружелюбная улыбка, профессиональное освещение, высокое качество.
+
+не меняй черты лица`}
+        />
+
+        <PromptCard
+          number={3}
+          title="Креативная профессия"
+          category="women"
+          description="Для дизайнеров, фотографов, художников."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+портрет [дизайнера/фотографа/художника], в творческой студии,
+естественный свет из большого окна, 50mm f/1.8, непринужденная поза,
+атмосфера креативности и вдохновения.
+
+не меняй черты лица`}
+        />
+      </div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="text-3xl">📱</span>
+        <span>Для соцсетей</span>
+      </h3>
+      <div class="space-y-6">
+
+        <PromptCard
+          number={4}
+          title="Аватарка для ВКонтакте"
+          category="women"
+          description="Яркая и привлекающая внимание."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+стильный портрет для аватарки, [описание стиля одежды],
+яркий [цвет] фон, крупный план, естественный макияж,
+85mm f/1.8, хорошее освещение, цвета насыщенные.
+
+не меняй черты лица`}
+        />
+
+        <PromptCard
+          number={5}
+          title="Для Телеграм-канала"
+          category="women"
+          description="Профессиональный стиль для публичного аккаунта."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+профессиональное фото для публичного аккаунта,
+[описание образа], минималистичный фон, уверенный взгляд,
+мягкое освещение, 50mm f/2.0, чистые цвета.
+
+не меняй черты лица`}
+        />
+
+        <PromptCard
+          number={6}
+          title="Инста-эстетика (через VPN)"
+          category="women"
+          description="Трендовый стиль для Instagram."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+инстаграм-портрет в [винтажном/минималистичном/бохо] стиле,
+[локация], золотой час, мягкий естественный свет,
+35mm f/2.0, пленочное зерно, приглушенные тона.
+
+не меняй черты лица`}
+        />
+      </div>
+    </div>
+
+    <!-- Urban Environment -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="text-3xl">🏙️</span>
+        <span>Городская среда</span>
+      </h3>
+      <div class="space-y-6">
+
+        <PromptCard
+          number={7}
+          title="Москва, Красная площадь"
+          category="women"
+          description="Атмосфера столичной жизни."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+[описание одежды] на фоне Красной площади,
+вечернее освещение, городские огни, 50mm f/1.8,
+атмосфера столичной жизни.
+
+не меняй черты лица`}
+        />
+
+        <PromptCard
+          number={8}
+          title="Петербург, набережная"
+          category="women"
+          description="Романтика северной столицы."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+в петербургском дворике с парадными, [описание одежды],
+пасмурный день, мягкий рассеянный свет, 35mm f/2.0,
+романтичная атмосфера северной столицы, пленочное зерно.
+
+не меняй черты лица`}
+        />
+
+        <PromptCard
+          number={9}
+          title="Уличный стиль"
+          category="women"
+          description="Современный стритстайл."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+стритстайл фото, [описание образа], на фоне [граффити/кирпичной стены/городской улицы],
+естественное дневное освещение, 35mm f/1.4, городская энергетика.
+
+не меняй черты лица`}
+        />
+      </div>
+    </div>
+
+    <!-- Nature & Travel -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="text-3xl">🌿</span>
+        <span>Природа и путешествия</span>
+      </h3>
+      <div class="space-y-6">
+        <PromptCard
+          number={10}
+          title="Парк / лес"
+          category="women"
+          description="Единение с природой."
+          prompt={`точно сохрани ВСЕ черты лица.
+
+в [описание одежды] среди осенних деревьев,
+золотые листья, мягкий солнечный свет сквозь ветви,
+50mm f/2.0, атмосфера уединения и спокойствия.
+
+не меняй черты лица`}
+        />
+      </div>
+    </div>
+  </SectionHeader>
+
+  <!-- MEN PROMPTS -->
+  <SectionHeader id="prompts-men" title="👨 Мужские промты">
+    <PromptCard
+        number={41}
+        title="Деловой портрет для резюме"
+        category="men"
+        description="Строгий стиль для профессионалов."
+        prompt={`точно сохрани ВСЕ черты лица: разрез глаз, форму носа, губы, овал лица, брови, подбородок, причёску.
+
+профессиональный деловой портрет мужчины, в тёмно-синем костюме и галстуке,
+нейтральный серый фон, уверенный взгляд в камеру, мягкое студийное освещение,
+85mm f/2.0, корпоративный стиль.
+
+не меняй черты лица совсем`}
+    />
+
+    <PromptCard
+        number={42}
+        title="Предприниматель / Стартапер"
+        category="men"
+        prompt={`точно сохрани ВСЕ черты лица.
+
+современный предприниматель, в рубашке без галстука,
+офис в стиле лофт на фоне, естественный свет из окон,
+50mm f/1.8, непринужденная уверенная поза, атмосфера инноваций.
+
+не меняй черты лица`}
+    />
+
+    <PromptCard
+        number={50}
+        title="Москва, Красная площадь"
+        category="men"
+        prompt={`точно сохрани ВСЕ черты лица.
+
+на Красной площади, в куртке или пальто, собор Василия Блаженного на фоне,
+вечернее освещение, 35mm f/2.0, атмосфера столичной жизни.
+
+не меняй черты лица`}
+    />
+
+    <PromptCard
+        number={55}
+        title="Читает книгу"
+        category="men"
+        prompt={`точно сохрани ВСЕ черты лица.
+
+в библиотеке или домашнем кресле, с книгой,
+уютное тёплое освещение, 50mm f/1.8,
+атмосфера интеллектуального досуга.
+
+не меняй черты лица`}
+    />
+    
+    <PromptCard
+        number={58}
+        title="Брутальный стиль"
+        category="men"
+        prompt={`точно сохрани ВСЕ черты лица.
+
+брутальный портрет, в кожаной куртке, небритость,
+индустриальный фон или мотоцикл, контрастное освещение,
+85mm f/1.8, атмосфера мужественности.
+
+не меняй черты лица`}
+    />
+  </SectionHeader>
+
+  <!-- KIDS PROMPTS -->
+  <SectionHeader id="prompts-kids" title="👶 Детские промты">
+    <PromptCard
+        number={71}
+        title="Новый год с Дедом Морозом"
+        category="kids"
+        prompt={`точно сохрани ВСЕ черты лица ребёнка: глаза, нос, губы, овал лица, брови.
+
+ребёнок в новогоднем свитере сидит рядом с Дедом Морозом,
+украшенная ёлка с гирляндами на фоне, подарки вокруг,
+тёплое мягкое освещение, 50mm f/2.0, волшебная праздничная атмосфера.
+
+не меняй черты лица ребёнка`}
+    />
+    
+    <PromptCard
+        number={75}
+        title="Первое сентября"
+        category="kids"
+        prompt={`точно сохрани ВСЕ черты лица ребёнка.
+
+первоклассник с букетом цветов, в школьной форме,
+школьное здание на фоне, солнечный сентябрьский день,
+естественное освещение, 50mm f/2.0, торжественная атмосфера.
+
+не меняй черты лица`}
+    />
+
+     <PromptCard
+        number={81}
+        title="Супергерой"
+        category="kids"
+        prompt={`точно сохрани ВСЕ черты лица ребёнка.
+
+ребёнок в костюме супергероя, героическая поза,
+яркий фон, динамичное освещение, 35mm f/2.0,
+атмосфера приключений и силы.
+
+не меняй черты лица`}
+    />
+
+     <PromptCard
+        number={91}
+        title="С игрушкой"
+        category="kids"
+        prompt={`точно сохрани ВСЕ черты лица ребёнка.
+
+ребёнок обнимает любимую игрушку, домашняя обстановка,
+мягкое уютное освещение, 50mm f/1.8, нежная атмосфера.
+
+не меняй черты лица`}
+    />
+  </SectionHeader>
+
+  <!-- ABOUT -->
+  <SectionHeader id="about" title="О нас">
+    <div class="bg-card border rounded-xl p-8">
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="flex-1 space-y-4">
+                <h3 class="text-2xl font-bold">Максим и Елисавета Наговицыны</h3>
+                <p class="text-muted-foreground">Со-основатели Nano Banana AI. Брат и сестра, которые сделали нейросети доступными для всех.</p>
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="p-4 bg-muted rounded-lg">
+                        <div class="font-bold">Максим (29 лет)</div>
+                        <div class="text-xs text-muted-foreground">IT & Маркетинг</div>
+                        <div class="text-sm mt-1">Отвечает за технологии. Создал 20+ AI проектов.</div>
+                    </div>
+                    <div class="p-4 bg-muted rounded-lg">
+                        <div class="font-bold">Елисавета (22 года)</div>
+                        <div class="text-xs text-muted-foreground">CPO & Контент</div>
+                        <div class="text-sm mt-1">Отвечает за красоту и упаковку.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t">
+            <h4 class="font-bold mb-2">Наша миссия:</h4>
+            <blockquote class="italic text-muted-foreground border-l-4 pl-4 border-primary">
+                "Сделать профессиональные нейрофото доступными каждому россиянину — без VPN, без сложностей, по честной цене."
+            </blockquote>
+        </div>
+    </div>
+  </SectionHeader>
+
+  <!-- CONCLUSION -->
+  <SectionHeader id="conclusion" title="Попробуйте прямо сейчас!">
+    <div class="text-center py-10 space-y-6">
+        <p class="text-xl">Первые 3 генерации — <b>БЕСПЛАТНО!</b></p>
+        <a href="https://t.me/nanobananas_bot" target="_blank" class="inline-flex items-center justify-center rounded-full text-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 h-14 px-8 py-2 shadow-lg hover:shadow-xl hover:shadow-primary/20">
+            Запустить бота @nanobananas_bot
+        </a>
+    </div>
+  </SectionHeader>
+
+</MainLayout>
+
+<script>
+    // Include the navigation spy script if not already handled by components
+    // (Actually handled in Navigation.astro but we need to make sure the side nav is injected)
+    // In Astro, scripts in components run when the component is on the page.
+</script>

@@ -1,0 +1,81 @@
+---
+import Navigation from './Navigation.astro';
+---
+
+<div class="md:hidden">
+  <button id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none" aria-label="Menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+  </button>
+
+  <div id="mobile-menu-overlay" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md hidden animate-in fade-in-0"></div>
+  
+  <div id="mobile-menu-content" class="fixed inset-y-0 left-0 z-[110] w-3/4 max-w-sm border-r border-border bg-background p-6 shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full">
+    <div class="flex items-center justify-between mb-8">
+        <a href="https://t.me/nanobananas_bot" target="_blank" rel="noopener noreferrer" class="font-bold text-lg hover:text-primary transition-colors">🍌 @nanobananas_bot</a>
+        <button id="mobile-menu-close" class="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+    <div class="overflow-y-auto h-[calc(100vh-8rem)]">
+        <Navigation />
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('mobile-menu-close');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const menu = document.getElementById('mobile-menu-content');
+  const navLinks = menu?.querySelectorAll('a');
+
+  function openMenu() {
+    overlay?.classList.remove('hidden');
+    menu?.classList.remove('-translate-x-full');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    overlay?.classList.add('hidden');
+    menu?.classList.add('-translate-x-full');
+    document.body.style.overflow = '';
+  }
+
+  btn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+
+  // Close on link click
+  navLinks?.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>
+
+<style>
+  /* Glassmorphism for mobile menu */
+  #mobile-menu-content {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  [data-theme="dark"] #mobile-menu-content {
+    background: #0a0a0a !important;
+    border-right-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7),
+                0 0 40px 0 rgba(0, 212, 255, 0.1);
+  }
+  
+  [data-theme="light"] #mobile-menu-content {
+    background: #ffffff !important;
+  }
+  
+  /* Ensure menu is always on top */
+  #mobile-menu-overlay,
+  #mobile-menu-content {
+    position: fixed !important;
+  }
+  
+  [data-theme="dark"] #mobile-menu-overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+</style>

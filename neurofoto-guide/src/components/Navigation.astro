@@ -1,0 +1,158 @@
+---
+// Navigation.astro
+const navSections = [
+  {
+    title: '📖 Основы',
+    items: [
+      { href: '#intro', label: 'Приветствие', icon: '👋' },
+      { href: '#cases', label: 'Зачем это нужно', icon: '🎯' },
+      { href: '#functionality', label: 'Функционал бота', icon: '🤖' },
+    ]
+  },
+  {
+    title: '🎓 Обучение',
+    items: [
+      { href: '#rules', label: 'Правила и секреты', icon: '📚' },
+    ]
+  },
+  {
+    title: '✨ Библиотека промтов',
+    items: [
+      { href: '#prompts-women', label: 'Женские промты', icon: '👩' },
+      { href: '#prompts-men', label: 'Мужские промты', icon: '👨' },
+      { href: '#prompts-kids', label: 'Детские промты', icon: '👶' },
+    ]
+  },
+  {
+    title: '💬 Информация',
+    items: [
+      { href: '#about', label: 'О нас', icon: '👥' },
+      { href: '#conclusion', label: 'Начать', icon: '🚀' },
+    ]
+  }
+];
+---
+
+<nav class="space-y-6 py-4">
+    <div class="px-3 mb-6">
+      <h2 class="text-lg font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        Навигация
+      </h2>
+    </div>
+    
+    {navSections.map(section => (
+      <div class="nav-section">
+        <h4 class="px-3 mb-2 text-xs font-bold uppercase tracking-wider text-muted-foreground/70">
+          {section.title}
+        </h4>
+        <div class="space-y-1">
+          {section.items.map(item => (
+            <a 
+              href={item.href}
+              class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
+            >
+              <span class="text-xl group-hover:scale-110 transition-transform duration-200">{item.icon}</span>
+              <span class="flex-1">{item.label}</span>
+              <span class="nav-indicator opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+    
+    <div class="mt-8 px-3">
+      <a 
+        href="https://t.me/nanobananas_bot" 
+        target="_blank"
+        class="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-4 py-3 text-sm font-bold text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+      >
+        <span>🍌</span>
+        <span>Открыть бота</span>
+      </a>
+    </div>
+</nav>
+
+<script>
+// Intersection Observer for active section highlighting
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+          link.classList.remove('active', 'text-foreground', 'bg-muted');
+          link.classList.add('text-muted-foreground');
+      });
+      const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+      if (activeLink) {
+        activeLink.classList.remove('text-muted-foreground');
+        activeLink.classList.add('active', 'text-foreground', 'bg-muted');
+      }
+    }
+  });
+}, { threshold: 0.2, rootMargin: "-20% 0px -50% 0px" });
+
+sections.forEach(section => observer.observe(section));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e: Event) {
+    e.preventDefault();
+    const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+    if (href) {
+      const target = document.querySelector(href);
+      if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Update URL without jump
+          history.pushState(null, '', href);
+      }
+    }
+  });
+});
+</script>
+
+<style>
+    .nav-link {
+        color: var(--muted-foreground);
+        position: relative;
+    }
+    
+    .nav-link:hover {
+        color: var(--foreground);
+        background: var(--accent);
+    }
+    
+    .nav-link.active {
+        color: var(--foreground);
+        background: var(--muted);
+        font-weight: 600;
+        border-left: 3px solid var(--primary);
+        padding-left: calc(0.75rem - 3px);
+    }
+    
+    [data-theme="dark"] .nav-link:hover {
+        background: rgba(0, 212, 255, 0.1);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+    }
+    
+    [data-theme="dark"] .nav-link.active {
+        border-left-color: var(--neon-blue);
+        background: rgba(0, 212, 255, 0.15);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+    
+    .nav-indicator {
+        color: var(--primary);
+        font-weight: bold;
+    }
+    
+    [data-theme="dark"] .nav-indicator {
+        color: var(--neon-blue);
+        text-shadow: 0 0 10px var(--neon-blue);
+    }
+    
+    .nav-section {
+        padding-bottom: 0.5rem;
+    }
+</style>

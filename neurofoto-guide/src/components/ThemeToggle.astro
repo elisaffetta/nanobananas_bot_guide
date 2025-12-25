@@ -1,0 +1,125 @@
+---
+// ThemeToggle.astro
+---
+<button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+  <span class="toggle-track">
+    <span class="toggle-thumb">
+      <span class="thumb-icon"></span>
+    </span>
+  </span>
+</button>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+  
+  function updateToggleVisual() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const track = themeToggle?.querySelector('.toggle-track') as HTMLElement;
+    const thumb = themeToggle?.querySelector('.toggle-thumb') as HTMLElement;
+    
+    if (track && thumb) {
+      // Force re-render by removing and re-adding elements
+      track.style.display = 'none';
+      void track.offsetHeight; // Trigger reflow
+      track.style.display = 'flex';
+    }
+  }
+  
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Force visual update
+    setTimeout(updateToggleVisual, 10);
+  });
+  
+  // Initialize on load
+  updateToggleVisual();
+</script>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .toggle-track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 64px;
+    height: 32px;
+    background: var(--muted);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+  
+  .theme-toggle:hover .toggle-track {
+    border-color: var(--primary);
+  }
+  
+  .toggle-thumb {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: var(--foreground);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    left: 4px;
+  }
+  
+  .thumb-icon::before {
+    content: '☀️';
+    font-size: 14px;
+  }
+  
+  /* Light theme state */
+  [data-theme="light"] .toggle-track {
+    background: linear-gradient(135deg, #ffd60a 0%, #ffb700 100%);
+    border-color: #ffd60a;
+  }
+  
+  [data-theme="light"] .toggle-thumb {
+    left: 4px;
+    background: #ffffff;
+  }
+  
+  /* Dark theme state */
+  [data-theme="dark"] .toggle-track {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    border-color: #00d4ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  }
+  
+  [data-theme="dark"] .toggle-thumb {
+    left: 34px;
+    background: #00d4ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  
+  [data-theme="dark"] .thumb-icon::before {
+    content: '🌙';
+  }
+  
+  /* Hover effects */
+  .theme-toggle:hover .toggle-thumb {
+    transform: scale(1.1);
+  }
+  
+  [data-theme="dark"] .theme-toggle:hover .toggle-track {
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+  }
+</style>

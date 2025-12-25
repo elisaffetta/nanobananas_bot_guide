@@ -1,0 +1,181 @@
+/* Global Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme */
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+    --card: #f8f9fa;
+    --card-foreground: #0a0a0a;
+
+    /* Accents */
+    --primary: #ffd60a;        /* Soft Yellow */
+    --primary-foreground: #0a0a0a;
+    --secondary: #ffc300;      /* Golden */
+    --accent: #ffb700;         /* Yellow-Orange */
+    
+    /* Neon Colors (Placeholder for light mode, but defined for consistency) */
+    --neon-blue: #00d4ff;
+    --neon-purple: #b800ff;
+    --neon-pink: #ff006e;
+
+    /* Borders & Muted */
+    --border: #e5e7eb;
+    --muted: #f3f4f6;
+    --muted-foreground: #6b7280;
+    
+    --radius: 0.75rem;
+
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    --font-mono: "SF Mono", Menlo, Monaco, "Courier New", monospace;
+  }
+
+  [data-theme="dark"] {
+    /* Dark Theme - Enhanced 2026 */
+    --background: #0a0a0a;
+    --foreground: #fafafa;
+    --card: #141414;
+    --card-foreground: #fafafa;
+
+    /* Accents */
+    --primary: #ffd60a;        /* Keep Yellow */
+    --primary-foreground: #0a0a0a;
+    
+    /* Neon Accents */
+    --accent: #00d4ff;         /* Main Neon - Blue */
+    
+    /* Borders & Muted */
+    --border: #27272a;
+    --muted: #18181b;
+    --muted-foreground: #a1a1aa;
+    
+    /* Enhanced Shadows & Glows */
+    --glow-blue: 0 0 20px rgba(0, 212, 255, 0.3);
+    --glow-purple: 0 0 20px rgba(184, 0, 255, 0.3);
+    --glow-pink: 0 0 20px rgba(255, 0, 110, 0.3);
+    --glow-yellow: 0 0 20px rgba(255, 214, 10, 0.3);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--background);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    background-color: var(--background);
+  }
+
+  /* Ensure all major containers respect theme */
+  section, div, aside, main, header, footer {
+    color: var(--foreground);
+  }
+  
+  /* Force background color on main containers */
+  .min-h-screen {
+    background-color: var(--background);
+  }
+
+  /* Fix specific elements that might not inherit properly */
+  h2, h3, h4, h5, h6 {
+    color: var(--foreground);
+  }
+
+  p, span, li, a {
+    color: inherit;
+  }
+  
+  /* Ensure proper text colors in dark mode */
+  [data-theme="dark"] p,
+  [data-theme="dark"] span:not([class*="bg-gradient"]):not([class*="text-"]),
+  [data-theme="dark"] li {
+    color: var(--foreground);
+  }
+
+  /* H1 styling - same for both themes */
+  h1 {
+    color: var(--foreground);
+  }
+
+  /* Glassmorphism for cards in dark mode */
+  [data-theme="dark"] .glass-card {
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Enhanced button hover effects */
+  [data-theme="dark"] button:hover,
+  [data-theme="dark"] .hover-glow:hover {
+    box-shadow: var(--glow-blue);
+    transform: translateY(-2px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Neon border animation */
+  @keyframes neon-pulse {
+    0%, 100% {
+      box-shadow: 0 0 5px var(--neon-blue),
+                  0 0 10px var(--neon-blue),
+                  0 0 20px var(--neon-blue);
+    }
+    50% {
+      box-shadow: 0 0 10px var(--neon-purple),
+                  0 0 20px var(--neon-purple),
+                  0 0 40px var(--neon-purple);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Custom Utilities */
+  .section-container {
+    @apply max-w-4xl mx-auto px-4 py-8 md:py-12;
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px currentColor,
+                 0 0 20px currentColor,
+                 0 0 30px currentColor;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  /* Enhanced card hover effects for dark mode */
+  [data-theme="dark"] .group:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Neon glow for benefit cards in dark mode */
+  [data-theme="dark"] .group:hover[class*="from-green"] {
+    box-shadow: 0 10px 40px rgba(34, 197, 94, 0.3);
+  }
+
+  [data-theme="dark"] .group:hover[class*="from-blue"] {
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+  }
+
+  [data-theme="dark"] .group:hover[class*="from-purple"] {
+    box-shadow: 0 10px 40px rgba(168, 85, 247, 0.3);
+  }
+
+  [data-theme="dark"] .group:hover[class*="from-primary"] {
+    box-shadow: 0 10px 40px rgba(255, 214, 10, 0.3);
+  }
+}
