@@ -7,9 +7,9 @@ import Navigation from './Navigation.astro';
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
   </button>
 
-  <div id="mobile-menu-overlay" class="fixed inset-0 z-[200] hidden animate-in fade-in-0"></div>
+  <div id="mobile-menu-overlay" class="fixed inset-0 z-[9998] hidden animate-in fade-in-0"></div>
   
-  <div id="mobile-menu-content" class="fixed inset-0 z-[210] w-full shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full mobile-menu-container">
+  <div id="mobile-menu-content" class="fixed inset-0 z-[9999] w-full shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full mobile-menu-container">
     <div class="flex items-center justify-between p-6 pb-4 mobile-menu-header">
         <a href="https://t.me/nanobananas_bot" target="_blank" rel="noopener noreferrer" class="font-bold text-lg hover:text-primary transition-colors">🍌 @nanobananas_bot</a>
         <button id="mobile-menu-close" class="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
@@ -72,21 +72,21 @@ import Navigation from './Navigation.astro';
 </script>
 
 <style>
-  /* Overlay - адаптивный для темной и светлой темы */
+  /* Overlay - БЕЗ backdrop-filter */
   #mobile-menu-overlay {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
   
   [data-theme="dark"] #mobile-menu-overlay {
-    background: rgba(0, 0, 0, 0.7) !important;
+    background: rgba(0, 0, 0, 0.95) !important;
   }
   
   [data-theme="light"] #mobile-menu-overlay {
-    background: rgba(255, 255, 255, 0.7) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
   }
   
-  /* КРИТИЧЕСКИ ВАЖНО: контейнер меню должен быть ПОЛНОСТЬЮ НЕПРОЗРАЧНЫМ */
+  /* Контейнер меню - ПОЛНОСТЬЮ БЕЗ backdrop-filter */
   #mobile-menu-content {
     position: fixed !important;
     backdrop-filter: none !important;
@@ -101,17 +101,26 @@ import Navigation from './Navigation.astro';
     background: #ffffff !important;
   }
   
-  /* Header меню */
+  /* Header меню - БЕЗ backdrop-filter */
   .mobile-menu-header {
-    background: inherit;
-    border-bottom: 1px solid var(--border);
-  }
-  
-  /* Область навигации - ПОЛНОСТЬЮ НЕПРОЗРАЧНАЯ */
-  .mobile-menu-nav {
     background: inherit !important;
+    border-bottom: 1px solid var(--border);
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Область навигации - ПОЛНОСТЬЮ БЕЗ backdrop-filter */
+  .mobile-menu-nav {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  [data-theme="dark"] .mobile-menu-nav {
+    background: #0a0a0a !important;
+  }
+  
+  [data-theme="light"] .mobile-menu-nav {
+    background: #ffffff !important;
   }
   
   /* Текст навигации - максимальная читаемость */
@@ -129,18 +138,29 @@ import Navigation from './Navigation.astro';
     background: transparent !important;
   }
   
+  [data-theme="light"] .mobile-menu-nav,
+  [data-theme="light"] .mobile-menu-nav *,
   [data-theme="light"] .mobile-menu-nav a,
   [data-theme="light"] .mobile-menu-nav h2,
   [data-theme="light"] .mobile-menu-nav h4,
   [data-theme="light"] .mobile-menu-nav span,
-  [data-theme="light"] .mobile-menu-nav div {
-    color: rgba(0, 0, 0, 0.9) !important;
-    background: transparent !important;
+  [data-theme="light"] .mobile-menu-nav div,
+  [data-theme="light"] .mobile-menu-nav p {
+    color: #1a1a1a !important;
   }
   
-  /* Заголовки секций в светлой теме */
+  /* Заголовки секций в светлой теме - чуть светлее */
   [data-theme="light"] .mobile-menu-nav h4 {
-    color: rgba(0, 0, 0, 0.6) !important;
+    color: #666666 !important;
+  }
+  
+  /* Ссылки в светлой теме */
+  [data-theme="light"] .mobile-menu-nav a {
+    color: #1a1a1a !important;
+  }
+  
+  [data-theme="light"] .mobile-menu-nav a:hover {
+    color: #000000 !important;
   }
   
   /* Убираем любые прозрачные фоны из навигации */
