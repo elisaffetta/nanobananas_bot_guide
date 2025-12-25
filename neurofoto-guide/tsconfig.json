@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
@@ -7,6 +7,10 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "strictNullChecks": true
-  }
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
