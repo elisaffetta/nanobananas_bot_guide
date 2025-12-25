@@ -51,7 +51,15 @@ const finalImagePath = foundImagePath || explicitImagePath;
   
   <div class="prompt-layout">
     <div class="prompt-content">
-      <pre class="prompt-text">{prompt}</pre>
+      <div class="prompt-text-container relative group/container">
+        <pre class="prompt-text transition-all duration-500 ease-in-out overflow-hidden" style="max-height: 180px;">{prompt}</pre>
+        <div class="expand-overlay absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-muted via-muted/95 to-transparent flex items-end justify-center pb-2 hidden">
+          <button class="expand-prompt-btn text-xs font-bold text-primary hover:text-accent transition-colors bg-muted/80 px-4 py-1 rounded-full border border-border/50 shadow-sm hover:shadow-md flex items-center gap-1 backdrop-blur-sm">
+            <span>👇</span>
+            <span>Развернуть весь промт</span>
+          </button>
+        </div>
+      </div>
     </div>
     
     {finalImagePath ? (
@@ -151,16 +159,12 @@ const finalImagePath = foundImagePath || explicitImagePath;
           content.style.position = 'relative';
           content.style.zIndex = '10000';
           content.style.cursor = 'default';
+          content.style.display = 'inline-block';
+          content.style.transition = 'transform 0.2s ease-out';
+          content.style.transformOrigin = 'center center';
           content.style.animation = 'modalZoom 0.3s ease-out';
           
           const isMobile = window.innerWidth < 768;
-          if (isMobile) {
-            content.style.maxWidth = '90vw';
-            content.style.maxHeight = '80vh';
-          } else {
-            content.style.maxWidth = '50vw';
-            content.style.maxHeight = '70vh';
-          }
           
           const closeBtn = document.createElement('button');
           closeBtn.className = 'image-modal-close';
@@ -181,32 +185,113 @@ const finalImagePath = foundImagePath || explicitImagePath;
           closeBtn.style.display = 'flex';
           closeBtn.style.alignItems = 'center';
           closeBtn.style.justifyContent = 'center';
-          closeBtn.style.transition = 'all 0.2s ease';
           closeBtn.style.zIndex = '10001';
           closeBtn.style.backdropFilter = 'blur(10px)';
           closeBtn.style.webkitBackdropFilter = 'blur(10px)';
+          closeBtn.style.transformOrigin = 'top right';
+          closeBtn.style.transition = 'transform 0.2s ease-out, top 0.2s ease-out, right 0.2s ease-out';
+          
+          const zoomControls = document.createElement('div');
+          zoomControls.className = 'image-modal-zoom-controls';
+          zoomControls.style.position = 'absolute';
+          zoomControls.style.bottom = '50px';
+          zoomControls.style.left = '50%';
+          zoomControls.style.transform = 'translateX(-50%)';
+          zoomControls.style.display = 'flex';
+          zoomControls.style.gap = '24px';
+          zoomControls.style.zIndex = '10001';
+          zoomControls.style.padding = '10px 20px';
+          zoomControls.style.borderRadius = '50px';
+          zoomControls.style.background = 'rgba(20, 20, 20, 0.4)';
+          zoomControls.style.backdropFilter = 'blur(16px)';
+          zoomControls.style.webkitBackdropFilter = 'blur(16px)';
+          zoomControls.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+          zoomControls.style.boxShadow = '0 8px 32px 0 rgba(0, 0, 0, 0.2)';
+          
+          let currentZoom = 1;
+
+          const createZoomBtn = (symbol, action) => {
+              const btn = document.createElement('button');
+              btn.innerHTML = symbol;
+              btn.style.width = '44px';
+              btn.style.height = '44px';
+              btn.style.borderRadius = '50%';
+              btn.style.background = 'rgba(255, 255, 255, 0.1)';
+              btn.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+              btn.style.color = 'white';
+              btn.style.fontSize = '1.5rem';
+              btn.style.display = 'flex';
+              btn.style.alignItems = 'center';
+              btn.style.justifyContent = 'center';
+              btn.style.cursor = 'pointer';
+              btn.style.transition = 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
+              btn.style.paddingBottom = symbol === '−' ? '2px' : '0';
+              
+              btn.addEventListener('mouseenter', () => {
+                btn.style.background = 'rgba(255, 255, 255, 0.25)';
+                btn.style.transform = 'scale(1.1)';
+                btn.style.boxShadow = '0 0 15px rgba(255, 255, 255, 0.2)';
+              });
+              
+              btn.addEventListener('mouseleave', () => {
+                btn.style.background = 'rgba(255, 255, 255, 0.1)';
+                btn.style.transform = 'scale(1)';
+                btn.style.boxShadow = 'none';
+              });
+
+              btn.addEventListener('click', (e) => {
+                  e.stopPropagation();
+                  action();
+              });
+
+              return btn;
+          };
+
+          const updateZoom = () => {
+              content.style.transform = `scale(${currentZoom})`;
+              
+              const inverseScale = 1 / currentZoom;
+              closeBtn.style.transform = `scale(${inverseScale})`;
+              
+              const offset = 10 / currentZoom;
+              closeBtn.style.top = `${offset}px`;
+              closeBtn.style.right = `${offset}px`;
+          };
+
+          const zoomInBtn = createZoomBtn('+', () => {
+              currentZoom += 0.25;
+              if (currentZoom > 3) currentZoom = 3;
+              updateZoom();
+          });
+
+          const zoomOutBtn = createZoomBtn('−', () => {
+              currentZoom -= 0.25;
+              if (currentZoom < 0.5) currentZoom = 0.5;
+              updateZoom();
+          });
+
+          zoomControls.appendChild(zoomOutBtn);
+          zoomControls.appendChild(zoomInBtn);
           
           const modalImg = document.createElement('img');
           modalImg.src = imageSrc;
           modalImg.alt = 'Увеличенное изображение';
-          modalImg.style.width = '100%';
+          modalImg.style.display = 'block';
+          modalImg.style.width = 'auto';
           modalImg.style.height = 'auto';
+          modalImg.style.maxWidth = isMobile ? '90vw' : '70vw'; // Slightly increased for mobile
+          modalImg.style.maxHeight = isMobile ? '75vh' : '75vh'; // Slightly increased for mobile
           modalImg.style.objectFit = 'contain';
           modalImg.style.borderRadius = isMobile ? '12px' : '16px';
           modalImg.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.5)';
-          modalImg.style.cursor = 'default';
-          modalImg.style.display = 'block';
-          
-          if (isMobile) {
-            modalImg.style.maxHeight = '80vh';
-          } else {
-            modalImg.style.maxHeight = '70vh';
-          }
           
           content.appendChild(closeBtn);
           content.appendChild(modalImg);
+          
           modal.appendChild(overlay);
           modal.appendChild(content);
+          modal.appendChild(zoomControls);
+          
           document.body.appendChild(modal);
           document.body.style.overflow = 'hidden';
           
@@ -231,25 +316,24 @@ const finalImagePath = foundImagePath || explicitImagePath;
           closeBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Close button clicked');
             closeModal();
           });
           
           closeBtn.addEventListener('mouseenter', () => {
             closeBtn.style.background = 'rgba(0, 0, 0, 0.8)';
-            closeBtn.style.transform = 'scale(1.1)';
+            const inverseScale = 1 / currentZoom;
+            closeBtn.style.transform = `scale(${inverseScale * 1.1})`;
           });
           
           closeBtn.addEventListener('mouseleave', () => {
             closeBtn.style.background = 'rgba(0, 0, 0, 0.6)';
-            closeBtn.style.transform = 'scale(1)';
+            const inverseScale = 1 / currentZoom;
+            closeBtn.style.transform = `scale(${inverseScale})`;
           });
           
           content.addEventListener('click', (e) => {
             e.stopPropagation();
           });
-          
-          content.style.transform = 'scale(1)';
           
           const escHandler = (e) => {
             if (e.key === 'Escape') {
@@ -262,11 +346,70 @@ const finalImagePath = foundImagePath || explicitImagePath;
       });
     }
 
+    function initExpandablePrompts() {
+      document.querySelectorAll('.prompt-text-container').forEach(container => {
+        if (container.dataset.expandInitialized) return;
+        container.dataset.expandInitialized = 'true';
+
+        const pre = container.querySelector('pre');
+        const overlay = container.querySelector('.expand-overlay');
+        const btn = container.querySelector('.expand-prompt-btn');
+
+        if (!pre || !overlay || !btn) return;
+
+        // Check if content overflows
+        const checkOverflow = () => {
+             // 180px is the max-height set in style
+             const isOverflowing = pre.scrollHeight > 180;
+             if (isOverflowing) {
+                 overlay.classList.remove('hidden');
+             } else {
+                 overlay.classList.add('hidden');
+             }
+        };
+        
+        // Check immediately and after a short delay
+        checkOverflow();
+        setTimeout(checkOverflow, 100);
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isExpanded = pre.style.maxHeight === 'none';
+            const btnTextSpan = btn.querySelector('span:last-child');
+            const btnIconSpan = btn.querySelector('span:first-child');
+            
+            if (isExpanded) {
+                // Collapse
+                pre.style.maxHeight = '180px';
+                overlay.classList.remove('items-start', 'pt-4', 'bg-transparent', 'h-auto', 'static');
+                overlay.classList.add('absolute', 'bottom-0', 'h-24', 'bg-gradient-to-t', 'from-muted', 'via-muted/95', 'to-transparent', 'items-end', 'pb-2');
+                
+                if (btnTextSpan) btnTextSpan.textContent = 'Развернуть весь промт';
+                if (btnIconSpan) btnIconSpan.textContent = '👇';
+                
+                // Scroll back to top of card if needed? Maybe not strictly required but nice.
+            } else {
+                // Expand
+                pre.style.maxHeight = 'none';
+                // Remove gradient overlay styles but keep button visible at the bottom
+                overlay.classList.remove('absolute', 'bottom-0', 'h-24', 'bg-gradient-to-t', 'from-muted', 'via-muted/95', 'to-transparent', 'items-end', 'pb-2');
+                overlay.classList.add('static', 'h-auto', 'bg-transparent', 'items-start', 'pt-4');
+                
+                if (btnTextSpan) btnTextSpan.textContent = 'Свернуть';
+                if (btnIconSpan) btnIconSpan.textContent = '☝️';
+            }
+        });
+      });
+    }
+
     function init() {
       if (initialized) return;
       initialized = true;
       initCopyButtons();
       initImageModal();
+      initExpandablePrompts();
     }
     
     if (document.readyState === 'loading') {
