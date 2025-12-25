@@ -6,19 +6,19 @@ import Navigation from './Navigation.astro';
   <button id="mobile-menu-btn" class="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none" aria-label="Menu">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
   </button>
-
-  <div id="mobile-menu-overlay" class="fixed inset-0 hidden animate-in fade-in-0"></div>
   
-  <div id="mobile-menu-content" class="fixed inset-0 w-full shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full mobile-menu-container">
-    <div class="flex items-center justify-between p-6 pb-4 mobile-menu-header">
+  <div id="mobile-menu-content" class="fixed inset-0 w-full transition-transform duration-300 ease-in-out -translate-x-full" style="z-index: 50; background-color: #ffffff;">
+    <div class="flex items-center justify-between p-6 pb-4 border-b" style="background-color: inherit;">
         <a href="https://t.me/nanobananas_bot" target="_blank" rel="noopener noreferrer" class="font-bold text-lg hover:text-primary transition-colors">🍌 @nanobananas_bot</a>
         <button id="mobile-menu-close" class="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>
             <span class="sr-only">Close</span>
         </button>
     </div>
-    <div class="overflow-y-auto px-6 pb-6 mobile-menu-nav" style="height: calc(100vh - 5rem);">
-        <Navigation />
+    <div class="overflow-y-auto px-6 pb-6" style="height: calc(100vh - 5rem); background-color: inherit;">
+        <div class="mobile-nav-wrapper" style="background-color: #f5f5f5; padding: 1.5rem; border-radius: 1rem; margin-top: 1rem;">
+          <Navigation />
+        </div>
     </div>
   </div>
 </div>
@@ -27,35 +27,40 @@ import Navigation from './Navigation.astro';
   function initMobileMenu() {
     const btn = document.getElementById('mobile-menu-btn');
     const closeBtn = document.getElementById('mobile-menu-close');
-    const overlay = document.getElementById('mobile-menu-overlay');
     const menu = document.getElementById('mobile-menu-content');
     
-    if (!btn || !closeBtn || !overlay || !menu) return;
+    if (!btn || !closeBtn || !menu) return;
     
     const navLinks = menu.querySelectorAll('a');
 
     function openMenu() {
-      if (!overlay || !menu) return;
-      overlay.classList.remove('hidden');
+      if (!menu) return;
       menu.classList.remove('-translate-x-full');
       document.body.style.overflow = 'hidden';
+      
+      // Установить фон в зависимости от темы
+      const theme = document.documentElement.getAttribute('data-theme');
+      const bgColor = theme === 'dark' ? '#0a0a0a' : '#ffffff';
+      const wrapperBgColor = theme === 'dark' ? '#1a1a1a' : '#f5f5f5';
+      
+      menu.style.backgroundColor = bgColor;
+      const header = menu.querySelector('.border-b');
+      const scrollArea = menu.querySelector('.overflow-y-auto');
+      const wrapper = menu.querySelector('.mobile-nav-wrapper');
+      
+      if (header) header.style.backgroundColor = bgColor;
+      if (scrollArea) scrollArea.style.backgroundColor = bgColor;
+      if (wrapper) wrapper.style.backgroundColor = wrapperBgColor;
     }
 
     function closeMenu() {
-      if (!overlay || !menu) return;
-      overlay.classList.add('hidden');
+      if (!menu) return;
       menu.classList.add('-translate-x-full');
       document.body.style.overflow = '';
-      // Remove blur from main content
-      const mainContent = document.querySelector('main');
-      const header = document.querySelector('header');
-      if (mainContent) mainContent.style.filter = '';
-      if (header) header.style.filter = '';
     }
 
     btn.addEventListener('click', openMenu);
     closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
 
     // Close on link click
     navLinks.forEach(link => {
@@ -72,117 +77,71 @@ import Navigation from './Navigation.astro';
 </script>
 
 <style>
-  /* Overlay - ПОЛНОСТЬЮ ЧЕРНЫЙ/БЕЛЫЙ БЕЗ ПРОЗРАЧНОСТИ */
-  #mobile-menu-overlay {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 9998 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-  
-  [data-theme="dark"] #mobile-menu-overlay {
-    background-color: #000000 !important;
-  }
-  
-  [data-theme="light"] #mobile-menu-overlay {
-    background-color: #ffffff !important;
-  }
-  
-  /* Контейнер меню - ПОЛНОСТЬЮ ЧЕРНЫЙ/БЕЛЫЙ БЕЗ ПРОЗРАЧНОСТИ */
+  /* Мобильное меню - ПОЛНОСТЬЮ НЕПРОЗРАЧНЫЙ контейнер */
   #mobile-menu-content {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 9999 !important;
+    z-index: 50 !important;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
   
+  /* Темная тема - ЧЕРНЫЙ непрозрачный фон */
   [data-theme="dark"] #mobile-menu-content {
-    background-color: #0a0a0a !important;
+    background: #0a0a0a !important;
+    color: #fafafa !important;
   }
   
+  /* Светлая тема - БЕЛЫЙ непрозрачный фон */
   [data-theme="light"] #mobile-menu-content {
-    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0a0a0a !important;
   }
   
-  /* Header меню */
-  .mobile-menu-header {
-    position: relative !important;
-    z-index: 10000 !important;
-    border-bottom: 1px solid var(--border);
+  /* Граница в темной теме */
+  [data-theme="dark"] #mobile-menu-content .border-b {
+    border-color: #27272a;
+    background: #0a0a0a !important;
+  }
+  
+  /* Граница в светлой теме */
+  [data-theme="light"] #mobile-menu-content .border-b {
+    border-color: #e5e7eb;
+    background: #ffffff !important;
+  }
+  
+  /* Область прокрутки - НЕПРОЗРАЧНЫЙ фон */
+  #mobile-menu-content .overflow-y-auto {
+    background: inherit !important;
+  }
+  
+  [data-theme="dark"] #mobile-menu-content .overflow-y-auto {
+    background: #0a0a0a !important;
+  }
+  
+  [data-theme="light"] #mobile-menu-content .overflow-y-auto {
+    background: #ffffff !important;
+  }
+  
+  /* КВАДРАТ С ФОНОМ ПОД НАВИГАЦИЕЙ */
+  .mobile-nav-wrapper {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Темная тема - темный квадрат */
+  [data-theme="dark"] .mobile-nav-wrapper {
+    background-color: #1a1a1a !important;
+  }
+  
+  /* Светлая тема - светлый квадрат */
+  [data-theme="light"] .mobile-nav-wrapper {
+    background-color: #f5f5f5 !important;
+  }
+  
+  /* Убираем все прозрачности из дочерних элементов */
+  #mobile-menu-content * {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-  }
-  
-  [data-theme="dark"] .mobile-menu-header {
-    background-color: #0a0a0a !important;
-  }
-  
-  [data-theme="light"] .mobile-menu-header {
-    background-color: #ffffff !important;
-  }
-  
-  /* Область навигации - ПОЛНОСТЬЮ ЧЕРНЫЙ/БЕЛЫЙ БЕЗ ПРОЗРАЧНОСТИ */
-  .mobile-menu-nav {
-    position: relative !important;
-    z-index: 10001 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-  
-  [data-theme="dark"] .mobile-menu-nav {
-    background-color: #0a0a0a !important;
-  }
-  
-  [data-theme="light"] .mobile-menu-nav {
-    background-color: #ffffff !important;
-  }
-  
-  /* Текст навигации - максимальная читаемость */
-  .mobile-menu-nav * {
-    position: relative !important;
-    z-index: 10001 !important;
-  }
-  
-  [data-theme="dark"] .mobile-menu-nav a,
-  [data-theme="dark"] .mobile-menu-nav h2,
-  [data-theme="dark"] .mobile-menu-nav h4,
-  [data-theme="dark"] .mobile-menu-nav span,
-  [data-theme="dark"] .mobile-menu-nav div {
-    color: rgba(255, 255, 255, 0.95) !important;
-    background: transparent !important;
-  }
-  
-  [data-theme="light"] .mobile-menu-nav,
-  [data-theme="light"] .mobile-menu-nav *,
-  [data-theme="light"] .mobile-menu-nav a,
-  [data-theme="light"] .mobile-menu-nav h2,
-  [data-theme="light"] .mobile-menu-nav h4,
-  [data-theme="light"] .mobile-menu-nav span,
-  [data-theme="light"] .mobile-menu-nav div,
-  [data-theme="light"] .mobile-menu-nav p {
-    color: #1a1a1a !important;
-  }
-  
-  /* Заголовки секций в светлой теме - чуть светлее */
-  [data-theme="light"] .mobile-menu-nav h4 {
-    color: #666666 !important;
-  }
-  
-  /* Ссылки в светлой теме */
-  [data-theme="light"] .mobile-menu-nav a {
-    color: #1a1a1a !important;
-  }
-  
-  [data-theme="light"] .mobile-menu-nav a:hover {
-    color: #000000 !important;
-  }
-  
-  /* Убираем любые прозрачные фоны из навигации */
-  .mobile-menu-nav .nav-section,
-  .mobile-menu-nav .space-y-6,
-  .mobile-menu-nav .space-y-0\.5 {
-    background: transparent !important;
   }
 </style>
