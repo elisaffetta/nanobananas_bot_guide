@@ -72,58 +72,70 @@ import Navigation from './Navigation.astro';
 </script>
 
 <style>
-  /* Overlay - БЕЗ backdrop-filter */
+  /* КРИТИЧЕСКИ ВАЖНО: Overlay - 100% непрозрачный, максимальный z-index */
   #mobile-menu-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9998 !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
   
   [data-theme="dark"] #mobile-menu-overlay {
     background: #000000 !important;
+    opacity: 1 !important;
   }
   
   [data-theme="light"] #mobile-menu-overlay {
     background: #ffffff !important;
+    opacity: 1 !important;
   }
   
-  /* Контейнер меню - ПОЛНОСТЬЮ БЕЗ backdrop-filter */
+  /* КРИТИЧЕСКИ ВАЖНО: Контейнер меню - максимальный z-index, 100% непрозрачный */
   #mobile-menu-content {
     position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    z-index: 9999 !important;
   }
   
   [data-theme="dark"] #mobile-menu-content {
     background: #0a0a0a !important;
+    opacity: 1 !important;
   }
   
   [data-theme="light"] #mobile-menu-content {
     background: #ffffff !important;
+    opacity: 1 !important;
   }
   
-  /* Header меню - БЕЗ backdrop-filter */
+  /* Header меню */
   .mobile-menu-header {
+    position: relative !important;
+    z-index: 10000 !important;
     background: inherit !important;
     border-bottom: 1px solid var(--border);
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
   
-  /* Область навигации - ПОЛНОСТЬЮ БЕЗ backdrop-filter */
+  /* КРИТИЧЕСКИ ВАЖНО: Область навигации - максимальный z-index, 100% непрозрачный фон */
   .mobile-menu-nav {
+    position: relative !important;
+    z-index: 10001 !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    position: relative !important;
-    z-index: 10000 !important;
   }
   
   [data-theme="dark"] .mobile-menu-nav {
     background: #0a0a0a !important;
+    opacity: 1 !important;
   }
   
   [data-theme="light"] .mobile-menu-nav {
     background: #ffffff !important;
+    opacity: 1 !important;
   }
   
   /* Текст навигации - максимальная читаемость */
