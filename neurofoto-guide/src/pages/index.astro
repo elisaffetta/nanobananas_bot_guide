@@ -24,7 +24,7 @@ import Navigation from '../components/Navigation.astro';
 
   <!-- INTRO SECTION -->
   <section id="intro" class="scroll-mt-24 mb-16 space-y-6">
-    <div class="space-y-4">
+    <div class="space-y-4 max-w-4xl">
       <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
         Нейрофотосессия: Полный гайд
       </h1>
@@ -685,7 +685,7 @@ import Navigation from '../components/Navigation.astro';
       <ol class="text-sm text-muted-foreground space-y-1 ml-6 list-decimal">
         <li>Скопируйте нужный промт кнопкой "Копировать"</li>
         <li>Замените [переменные] на свои значения</li>
-        <li>Вставьте в бот @nanobananas_bot</li>
+        <li>Вставьте в бот <a href="https://t.me/nanobananas_bot" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">@nanobananas_bot</a></li>
         <li>Наслаждайтесь результатом!</li>
       </ol>
     </div>
@@ -702,6 +702,7 @@ import Navigation from '../components/Navigation.astro';
           title="Классический деловой портрет"
           category="women"
           description="Универсальный вариант для любой профессии."
+          imagePath="/images/results/prompt-1.jpg"
           prompt={`точно сохрани ВСЕ черты лица: разрез глаз, форму носа, губы, овал лица, брови, подбородок, прическу.
 
 профессиональный деловой портрет, в [цвет] костюме на нейтральном сером фоне,

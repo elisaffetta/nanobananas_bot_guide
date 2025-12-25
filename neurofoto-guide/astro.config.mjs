@@ -10,4 +10,8 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  output: 'static',
+  build: {
+    inlineStylesheets: 'auto',
+  },
 });

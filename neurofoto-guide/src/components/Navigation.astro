@@ -33,25 +33,25 @@ const navSections = [
 ];
 ---
 
-<nav class="space-y-6 py-4">
-    <div class="px-3 mb-6">
-      <h2 class="text-lg font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+<nav class="space-y-6 py-2">
+    <div class="px-3 mb-3">
+      <h2 class="text-base font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
         Навигация
       </h2>
     </div>
     
     {navSections.map(section => (
       <div class="nav-section">
-        <h4 class="px-3 mb-2 text-xs font-bold uppercase tracking-wider text-muted-foreground/70">
+        <h4 class="px-3 mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground/70">
           {section.title}
         </h4>
-        <div class="space-y-1">
+        <div class="space-y-0.5">
           {section.items.map(item => (
             <a 
               href={item.href}
-              class="nav-link group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
+              class="nav-link group flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
             >
-              <span class="text-xl group-hover:scale-110 transition-transform duration-200">{item.icon}</span>
+              <span class="text-lg group-hover:scale-110 transition-transform duration-200">{item.icon}</span>
               <span class="flex-1">{item.label}</span>
               <span class="nav-indicator opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </a>
@@ -60,11 +60,12 @@ const navSections = [
       </div>
     ))}
     
-    <div class="mt-8 px-3">
+    <div class="mt-4 px-3">
       <a 
         href="https://t.me/nanobananas_bot" 
         target="_blank"
-        class="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-4 py-3 text-sm font-bold text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-3 py-2 text-sm font-bold text-primary-foreground shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
       >
         <span>🍌</span>
         <span>Открыть бота</span>
@@ -153,6 +154,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
     
     .nav-section {
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.75rem;
     }
 </style>
