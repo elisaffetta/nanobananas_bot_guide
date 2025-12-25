@@ -119,13 +119,11 @@ const { title, description } = Astro.props;
                     // Show sidebar
                     sidebar.style.display = '';
                     mainContainer.style.gridTemplateColumns = '';
-                    mainContainer.style.maxWidth = '';
                     toggleBtn.setAttribute('title', 'Скрыть меню');
                 } else {
                     // Hide sidebar
                     sidebar.style.display = 'none';
                     mainContainer.style.gridTemplateColumns = '1fr';
-                    mainContainer.style.maxWidth = '100%';
                     toggleBtn.setAttribute('title', 'Показать меню');
                 }
             });

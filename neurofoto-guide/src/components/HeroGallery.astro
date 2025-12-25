@@ -1,0 +1,229 @@
+---
+const images = [
+  '/images/results/prompt-1.jpg',
+  '/images/results/prompt-41.jpg',
+  '/images/results/prompt-71.jpg',
+  '/images/results/prompt-2.jpg',
+  '/images/results/prompt-42.jpg',
+  '/images/results/prompt-72.jpg',
+  '/images/results/prompt-3.jpg',
+  '/images/results/prompt-43.jpg',
+  '/images/results/prompt-73.jpg',
+  '/images/results/prompt-4.jpg',
+  '/images/results/prompt-44.jpg',
+  '/images/results/prompt-5.jpg',
+];
+---
+
+<div class="gallery-wrapper">
+  <div class="gallery-track">
+    {/* Первый набор */}
+    {images.map((src) => (
+      <div class="gallery-item">
+        <img src={src} alt="Пример генерации" loading="lazy" />
+        <div class="gallery-overlay">
+          <span class="gallery-icon">🔍</span>
+        </div>
+      </div>
+    ))}
+    {/* Дубликат для бесшовной прокрутки */}
+    {images.map((src) => (
+      <div class="gallery-item">
+        <img src={src} alt="Пример генерации" loading="lazy" />
+        <div class="gallery-overlay">
+          <span class="gallery-icon">🔍</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    function openModal(imageSrc) {
+      const modal = document.createElement('div');
+      modal.className = 'gallery-modal';
+      Object.assign(modal.style, {
+        position: 'fixed',
+        inset: '0',
+        zIndex: '9999',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: '0',
+        transition: 'opacity 0.3s ease'
+      });
+      
+      const overlay = document.createElement('div');
+      Object.assign(overlay.style, {
+        position: 'absolute',
+        inset: '0',
+        background: 'rgba(0, 0, 0, 0.85)',
+        backdropFilter: 'blur(8px)',
+        cursor: 'pointer'
+      });
+      
+      const img = document.createElement('img');
+      img.src = imageSrc;
+      Object.assign(img.style, {
+        maxWidth: 'min(600px, 90vw)', // Компактный размер: максимум 600px или 90% ширины экрана
+        maxHeight: '70vh',            // Не на всю высоту, оставляем воздух
+        objectFit: 'contain',
+        borderRadius: '12px',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+        transform: 'scale(0.9)',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        position: 'relative',
+        zIndex: '10000',
+        pointerEvents: 'none'
+      });
+      // Разрешим клик по картинке не закрывать модалку, а клик по фону - закрывать
+      img.style.pointerEvents = 'auto';
+
+      modal.appendChild(overlay);
+      modal.appendChild(img);
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+
+      // Анимация появления
+      requestAnimationFrame(() => {
+        modal.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      });
+
+      const closeModal = () => {
+        modal.style.opacity = '0';
+        img.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          if (modal.parentNode) document.body.removeChild(modal);
+          document.body.style.overflow = '';
+        }, 300);
+      };
+
+      overlay.addEventListener('click', closeModal);
+      
+      // Закрытие по Esc
+      const escHandler = (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+          document.removeEventListener('keydown', escHandler);
+        }
+      };
+      document.addEventListener('keydown', escHandler);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        item.addEventListener('click', (e) => {
+          const img = item.querySelector('img');
+          if (img && img.src) {
+            openModal(img.src);
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+<style>
+  .gallery-wrapper {
+    width: 100%;
+    max-width: 1024px; /* Ограничение ширины (max-w-5xl) */
+    margin: 0 auto;    /* Центрирование */
+    overflow: hidden;
+    position: relative;
+    padding: 1.5rem 0;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .gallery-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+    padding-left: 1.5rem; /* Компенсация маски */
+  }
+
+  /* Пауза при наведении */
+  .gallery-wrapper:hover .gallery-track {
+    animation-play-state: paused;
+  }
+
+  .gallery-item {
+    flex-shrink: 0;
+    width: 200px;  /* Горизонтальный формат, компактный */
+    height: 140px; /* Горизонтальный формат, компактный */
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 24px -10px rgba(0,0,0,0.2);
+    z-index: 10;
+    border-color: var(--primary);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-icon {
+    font-size: 1.5rem;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .gallery-item:hover .gallery-icon {
+    transform: scale(1);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-item {
+      width: 160px;
+      height: 110px;
+    }
+    .gallery-track {
+      gap: 1rem;
+      animation-duration: 40s;
+    }
+  }
+</style>

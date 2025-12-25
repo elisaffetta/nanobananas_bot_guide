@@ -4,6 +4,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import PromptCard from '../components/PromptCard.astro';
 import Badge from '../components/Badge.astro';
 import Navigation from '../components/Navigation.astro';
+import HeroGallery from '../components/HeroGallery.astro';
 
 // Content Data could be moved to content collections later, but for now we inline it as requested
 ---
@@ -24,66 +25,70 @@ import Navigation from '../components/Navigation.astro';
 
   <!-- INTRO SECTION -->
   <section id="intro" class="scroll-mt-24 mb-16 space-y-6">
-    <div class="space-y-4 max-w-4xl">
-      <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
-        Нейрофотосессия: Полный гайд
-      </h1>
-      <p class="text-xl text-muted-foreground leading-relaxed">
-        Превратите обычное селфи в профессиональную фотосессию за 30 секунд. 
-        Экономьте тысячи рублей на фотографах.
-      </p>
-    </div>
-
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
-      <!-- Card 1: Price -->
-      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-green-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-green-500/50">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-3">
-            <div class="text-4xl">💸</div>
-            <div class="text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">Экономия</div>
-          </div>
-          <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent leading-tight">Экономия</div>
-          <div class="text-sm text-muted-foreground font-medium">Сэкономьте деньги на фотосессиях и создании контента</div>
-        </div>
+    <div class="max-w-5xl mx-auto w-full">
+      <div class="space-y-4 max-w-4xl mb-8">
+        <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          Нейрофотосессия: Полный гайд
+        </h1>
+        <p class="text-xl text-muted-foreground leading-relaxed">
+          Превратите обычное селфи в профессиональную фотосессию за 30 секунд. 
+          Экономьте тысячи рублей на фотографах.
+        </p>
       </div>
 
-      <!-- Card 2: Speed -->
-      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-blue-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-blue-500/50">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-3">
-            <div class="text-4xl">⚡</div>
-            <div class="text-xs font-semibold text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full">Скорость</div>
-          </div>
-          <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent leading-tight">Быстро</div>
-          <div class="text-sm text-muted-foreground font-medium">Создавайте контент за 30 секунд вместо часов съемки</div>
-        </div>
-      </div>
+      <HeroGallery />
 
-      <!-- Card 3: Location -->
-      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-purple-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-purple-500/50">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-3">
-            <div class="text-4xl">🌍</div>
-            <div class="text-xs font-semibold text-purple-500 bg-purple-500/10 px-2 py-1 rounded-full">Свобода</div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
+        <!-- Card 1: Price -->
+        <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-green-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-green-500/50">
+          <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-4xl">💸</div>
+              <div class="text-xs font-semibold text-green-500 bg-green-500/10 px-2 py-1 rounded-full">Экономия</div>
+            </div>
+            <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent leading-tight">Экономия</div>
+            <div class="text-sm text-muted-foreground font-medium">Сэкономьте деньги на фотосессиях и создании контента</div>
           </div>
-          <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight">Везде</div>
-          <div class="text-sm text-muted-foreground font-medium">Окажитесь в любой локации планеты сидя дома</div>
         </div>
-      </div>
 
-      <!-- Card 4: Face Preservation -->
-      <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-primary/50">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="flex items-center justify-between mb-3">
-            <div class="text-4xl">💯</div>
-            <div class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">Точность</div>
+        <!-- Card 2: Speed -->
+        <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-blue-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-blue-500/50">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-4xl">⚡</div>
+              <div class="text-xs font-semibold text-blue-500 bg-blue-500/10 px-2 py-1 rounded-full">Скорость</div>
+            </div>
+            <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-blue-400 to-cyan-600 bg-clip-text text-transparent leading-tight">Быстро</div>
+            <div class="text-sm text-muted-foreground font-medium">Создавайте контент за 30 секунд вместо часов съемки</div>
           </div>
-          <div class="text-3xl font-extrabold mb-2 bg-gradient-to-r from-yellow-400 to-orange-600 bg-clip-text text-transparent">96% Лицо</div>
-          <div class="text-sm text-muted-foreground font-medium">Максимальное сохранение черт</div>
+        </div>
+
+        <!-- Card 3: Location -->
+        <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-purple-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-purple-500/50">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-4xl">🌍</div>
+              <div class="text-xs font-semibold text-purple-500 bg-purple-500/10 px-2 py-1 rounded-full">Свобода</div>
+            </div>
+            <div class="text-xl font-extrabold mb-2 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight">Везде</div>
+            <div class="text-sm text-muted-foreground font-medium">Окажитесь в любой локации планеты сидя дома</div>
+          </div>
+        </div>
+
+        <!-- Card 4: Face Preservation -->
+        <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-primary/50">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative z-10">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-4xl">💯</div>
+              <div class="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded-full">Точность</div>
+            </div>
+            <div class="text-3xl font-extrabold mb-2 bg-gradient-to-r from-yellow-400 to-orange-600 bg-clip-text text-transparent">96% Лицо</div>
+            <div class="text-sm text-muted-foreground font-medium">Максимальное сохранение черт</div>
+          </div>
         </div>
       </div>
     </div>
@@ -91,26 +96,36 @@ import Navigation from '../components/Navigation.astro';
 
   <!-- CASES SECTION -->
   <SectionHeader id="cases" title="Зачем вам нейрофотосессия?">
-    <div class="grid gap-6 md:grid-cols-2 mt-6">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
       <div class="rounded-xl border bg-card p-6 shadow-sm">
-        <Badge variant="secondary" class="mb-2">Кейс #1</Badge>
+        <Badge variant="secondary" class="mb-2">Кейс #1 💼</Badge>
         <h3 class="text-lg font-bold mb-2">Обновить фото для резюме</h3>
         <p class="text-muted-foreground text-sm">Старое фото не внушает доверия? Сделайте профессиональный деловой портрет в костюме за 1 минуту.</p>
       </div>
       <div class="rounded-xl border bg-card p-6 shadow-sm">
-        <Badge variant="secondary" class="mb-2">Кейс #2</Badge>
+        <Badge variant="secondary" class="mb-2">Кейс #2 📱</Badge>
         <h3 class="text-lg font-bold mb-2">Аватарки для соцсетей</h3>
         <p class="text-muted-foreground text-sm">Разные стили для разных площадок: яркий для ВК, строгий для Telegram, эстетичный для Instagram.</p>
       </div>
       <div class="rounded-xl border bg-card p-6 shadow-sm">
-        <Badge variant="secondary" class="mb-2">Кейс #3</Badge>
+        <Badge variant="secondary" class="mb-2">Кейс #3 💇‍♀️</Badge>
         <h3 class="text-lg font-bold mb-2">Примерить новый образ</h3>
         <p class="text-muted-foreground text-sm">Блондинка или брюнетка? Короткая стрижка? Посмотрите на себя ДО похода к стилисту.</p>
       </div>
       <div class="rounded-xl border bg-card p-6 shadow-sm">
-        <Badge variant="secondary" class="mb-2">Кейс #4</Badge>
+        <Badge variant="secondary" class="mb-2">Кейс #4 ✈️</Badge>
         <h3 class="text-lg font-bold mb-2">Фото из путешествий</h3>
         <p class="text-muted-foreground text-sm">Фото на фоне Эйфелевой башни без билета в Париж. Идеально для контента.</p>
+      </div>
+      <div class="rounded-xl border bg-card p-6 shadow-sm">
+        <Badge variant="secondary" class="mb-2">Кейс #5 💰</Badge>
+        <h3 class="text-lg font-bold mb-2">Заработок на услугах</h3>
+        <p class="text-muted-foreground text-sm">Продавайте готовые нейрофото клиентам. Рыночная цена: 150-500₽ за фото. Без вложений и сложного оборудования.</p>
+      </div>
+      <div class="rounded-xl border bg-card p-6 shadow-sm">
+        <Badge variant="secondary" class="mb-2">Кейс #6 🛍️</Badge>
+        <h3 class="text-lg font-bold mb-2">Для Wildberries и Ozon</h3>
+        <p class="text-muted-foreground text-sm">Экономьте на моделях и фотостудиях. Создавайте уникальные карточки товаров с разными лицами для повышения продаж.</p>
       </div>
     </div>
   </SectionHeader>
