@@ -1,4 +1,7 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 interface Props {
   number: number;
   title: string;
@@ -8,7 +11,29 @@ interface Props {
   imagePath?: string;
 }
 
-const { number, title, prompt, description, category, imagePath } = Astro.props;
+const { number, title, prompt, description, category, imagePath: explicitImagePath } = Astro.props;
+
+// Автоматический поиск изображения
+const possibleExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+let foundImagePath = null;
+
+// Проверяем файлы в public/images/results/
+const publicDir = path.join(process.cwd(), 'public');
+const resultsDir = '/images/results';
+const baseFilename = `prompt-${number}`;
+
+for (const ext of possibleExtensions) {
+  const relativePath = path.join(resultsDir, baseFilename + ext);
+  const fullPath = path.join(publicDir, relativePath);
+  
+  if (fs.existsSync(fullPath)) {
+    foundImagePath = relativePath;
+    break;
+  }
+}
+
+// Используем найденное изображение или явно переданное
+const finalImagePath = foundImagePath || explicitImagePath;
 ---
 
 <div class="prompt-card group">
@@ -29,22 +54,22 @@ const { number, title, prompt, description, category, imagePath } = Astro.props;
       <pre class="prompt-text">{prompt}</pre>
     </div>
     
-    {imagePath ? (
+    {finalImagePath ? (
       <div class="prompt-result">
         <p class="result-label mb-2 text-xs font-semibold">Результат:</p>
         <img 
-          src={imagePath} 
+          src={finalImagePath} 
           alt={`Результат: ${title}`}
           loading="lazy"
           class="result-image"
-          data-image-modal={imagePath}
+          data-image-modal={finalImagePath}
         />
       </div>
     ) : (
       <div class="prompt-result-placeholder">
         <p class="placeholder-text text-sm">🖼️ Место для фото</p>
         <p class="placeholder-hint text-xs">
-          <code>/public/images/results/prompt-{number}.jpg</code>
+          <code>prompt-{number}.jpg</code>
         </p>
       </div>
     )}
