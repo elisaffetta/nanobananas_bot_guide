@@ -28,6 +28,7 @@
     if (!themeToggle || !sunIcon || !moonIcon) return;
     
     function updateIcons() {
+      if (!sunIcon || !moonIcon) return;
       const currentTheme = htmlElement.getAttribute('data-theme');
       if (currentTheme === 'dark') {
         sunIcon.classList.add('hidden');
@@ -46,6 +47,7 @@
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       
       htmlElement.setAttribute('data-theme', newTheme);
+      htmlElement.classList.toggle('dark', newTheme === 'dark');
       localStorage.setItem('theme', newTheme);
       
       updateIcons();

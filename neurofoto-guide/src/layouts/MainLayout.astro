@@ -89,13 +89,16 @@ const { title, description } = Astro.props;
             const savedTheme = localStorage.getItem('theme');
             const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             const theme = savedTheme || systemTheme;
+            
             document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.classList.toggle('dark', theme === 'dark');
             
             // Add listener for system theme changes if no preference saved
             if (!savedTheme) {
                 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
                     const newTheme = e.matches ? 'dark' : 'light';
                     document.documentElement.setAttribute('data-theme', newTheme);
+                    document.documentElement.classList.toggle('dark', newTheme === 'dark');
                 });
             }
         })();
