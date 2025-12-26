@@ -38,6 +38,71 @@ import HeroGallery from '../components/HeroGallery.astro';
 
       <HeroGallery />
 
+      <!-- Welcome Introduction -->
+      <div class="bg-gradient-to-br from-primary/5 via-card to-accent/5 border-2 border-primary/20 rounded-2xl p-8 mt-8 mb-8">
+        <h2 class="text-2xl font-bold mb-4 flex items-center gap-3">
+          <span class="text-3xl">🍌</span>
+          <span>Добро пожаловать в гайд по нейрофотографии!</span>
+        </h2>
+        
+        <p class="text-lg text-muted-foreground mb-6">
+          Это не просто инструкция к боту — это ваш билет в новую профессию, которая набирает обороты прямо сейчас.
+        </p>
+
+        <div class="bg-card/50 rounded-xl p-6 border border-border">
+          <h3 class="font-bold mb-4 flex items-center gap-2">
+            <span>📊</span>
+            <span>Что вас ждёт:</span>
+          </h3>
+          
+          <div class="space-y-3 text-sm">
+            <div class="flex gap-3">
+              <span class="font-bold text-primary shrink-0">Раздел 1:</span>
+              <div>
+                <div class="font-semibold">Нейрофотография как профессия</div>
+                <div class="text-muted-foreground">→ Что это, кто платит, сколько можно зарабатывать</div>
+              </div>
+            </div>
+            
+            <div class="flex gap-3">
+              <span class="font-bold text-primary shrink-0">Раздел 2:</span>
+              <div>
+                <div class="font-semibold">Изучаем инструмент</div>
+                <div class="text-muted-foreground">→ Возможности @nanobananas_bot — ваш рабочий инструмент</div>
+              </div>
+            </div>
+            
+            <div class="flex gap-3">
+              <span class="font-bold text-primary shrink-0">Раздел 3:</span>
+              <div>
+                <div class="font-semibold">Правила создания качественных фото</div>
+                <div class="text-muted-foreground">→ Секреты промптов с 96%+ сохранением лица</div>
+              </div>
+            </div>
+            
+            <div class="flex gap-3">
+              <span class="font-bold text-primary shrink-0">Раздел 4:</span>
+              <div>
+                <div class="font-semibold">Как найти первых клиентов</div>
+                <div class="text-muted-foreground">→ От портфолио до денег на Авито</div>
+              </div>
+            </div>
+            
+            <div class="flex gap-3">
+              <span class="font-bold text-primary shrink-0">Раздел 5:</span>
+              <div>
+                <div class="font-semibold">Библиотека готовых промтов</div>
+                <div class="text-muted-foreground">→ 250+ решений для работы</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-lg font-bold mt-6 text-center">
+          Поехали! 🚀
+        </p>
+      </div>
+
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-4">
         <!-- Card 1: Price -->
         <div class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-green-500/10 via-card to-card p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-green-500/50">
@@ -94,8 +159,175 @@ import HeroGallery from '../components/HeroGallery.astro';
     </div>
   </section>
 
+  <!-- PROFESSION SECTION -->
+  <SectionHeader id="profession" title="💼 Нейрофотограф — новая профессия 2026 года" className="pt-4 md:pt-8">
+    <div class="space-y-8">
+      <!-- What is it -->
+      <div class="bg-card border rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Что это такое?</h3>
+        <p class="text-muted-foreground leading-relaxed">
+          <strong>Нейрофотограф</strong> — специалист, который создаёт профессиональные фото с помощью ИИ. 
+          Это не фотошопер и не дизайнер. Это отдельная профессия на стыке технологий и визуала.
+        </p>
+      </div>
+
+      <!-- Why востребовано -->
+      <div class="bg-card border rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Почему это востребовано?</h3>
+        <p class="font-semibold mb-3">Цифры из исследований:</p>
+        <ul class="space-y-2 text-muted-foreground">
+          <li class="flex items-start gap-2">
+            <span class="text-primary font-bold">•</span>
+            <span>Рост поисковых запросов "нейрофотосессия" в 4 раза за 2025 год (данные VC.ru)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-primary font-bold">•</span>
+            <span>Средняя цена: 150-500₽ за фото, 3000-7000₽ за пакет</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-primary font-bold">•</span>
+            <span>Рынок в фазе активного роста</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Clients -->
+      <div class="bg-card border rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Кто ваши клиенты?</h3>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <h4 class="font-bold mb-2">1. Блогеры и инфлюенсеры</h4>
+            <p class="text-sm text-muted-foreground mb-2">Постоянный контент для TikTok, VK, Telegram. Подложки для сторис, обложки постов.</p>
+            <p class="text-sm font-semibold text-primary">Готовы платить: 3000-5000₽/месяц</p>
+          </div>
+
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <h4 class="font-bold mb-2">2. Владельцы магазинов на WB и Ozon</h4>
+            <p class="text-sm text-muted-foreground mb-2">Карточки товаров с разными моделями. Реальная фотосессия = 15-30 тысяч. Нейрофото = 3-5 тысяч.</p>
+            <p class="text-sm font-semibold text-primary">Готовы платить: 5000-10000₽ за серию</p>
+          </div>
+
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <h4 class="font-bold mb-2">3. Фрилансеры и специалисты</h4>
+            <p class="text-sm text-muted-foreground mb-2">Фото для резюме, HeadHunter, Habr Career, портфолио.</p>
+            <p class="text-sm font-semibold text-primary">Готовы платить: 500-1500₽ за 3-5 портретов</p>
+          </div>
+
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <h4 class="font-bold mb-2">4. Владельцы малого бизнеса</h4>
+            <p class="text-sm text-muted-foreground mb-2">Фото команды для сайта вместо корпоративной съёмки за 50-80 тысяч.</p>
+            <p class="text-sm font-semibold text-primary">Готовы платить: 10000-25000₽ за 5-15 человек</p>
+          </div>
+
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <h4 class="font-bold mb-2">5. Обычные люди</h4>
+            <p class="text-sm text-muted-foreground mb-2">Аватарки, подарочные фото, примерка образов.</p>
+            <p class="text-sm font-semibold text-primary">Готовы платить: 300-1000₽ за 5-10 фото</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real examples -->
+      <div class="bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-2 border-blue-500/20 rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Реальные примеры с Авито и Яндекс.Услуг:</h3>
+        <div class="bg-card/50 p-4 rounded-lg mb-4">
+          <p class="text-sm text-muted-foreground mb-2">Средние цены (декабрь 2025):</p>
+          <ul class="space-y-1 text-sm">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>1 фото: 150-500₽</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>5 фото: 990-1500₽</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>10 фото: 3000-5000₽</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>20-30 фото: 5000-7000₽</span>
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-2 text-sm">
+          <p class="font-semibold">Примеры объявлений:</p>
+          <ul class="space-y-2 text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <span class="text-primary">→</span>
+              <span>"10 фото — 3000₽, Стандарт / 5000₽ Расширенный" (47 исполнителей в Москве)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary">→</span>
+              <span>"Нейрофотосессия от 490₽, первые 3 превью бесплатно"</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary">→</span>
+              <span>"AI-фотосессия — готово за день, любая локация"</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Advantages -->
+      <div class="bg-card border rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Ваши преимущества:</h3>
+        <div class="grid gap-3 md:grid-cols-2">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✅</span>
+            <div>
+              <p class="font-semibold">Нулевые вложения</p>
+              <p class="text-sm text-muted-foreground">Не нужна камера, студия</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✅</span>
+            <div>
+              <p class="font-semibold">Работа из дома</p>
+              <p class="text-sm text-muted-foreground">Клиенты по всей России</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✅</span>
+            <div>
+              <p class="font-semibold">Быстрый старт</p>
+              <p class="text-sm text-muted-foreground">Первый заказ можно получить через несколько дней</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✅</span>
+            <div>
+              <p class="font-semibold">Экологичная профессия</p>
+              <p class="text-sm text-muted-foreground">Помогаете людям выглядеть лучше</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-2xl">✅</span>
+            <div>
+              <p class="font-semibold">Масштабируемость</p>
+              <p class="text-sm text-muted-foreground">От подработки до основного дохода</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-lg font-semibold">Готовы попробовать? Читайте дальше 👇</p>
+      </div>
+    </div>
+  </SectionHeader>
+
   <!-- CASES SECTION -->
-  <SectionHeader id="cases" title="Зачем вам нейрофотосессия?" className="pt-4 md:pt-8">
+  <SectionHeader id="cases" title="🎯 Зачем вам нейрофотосессия?" className="pt-4 md:pt-8">
+    <div class="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-6 mb-8">
+      <p class="text-lg text-muted-foreground leading-relaxed">
+        Перед техническими деталями — разберёмся в реальных ситуациях.
+        <br/>
+        Вот 6 практических кейсов, которые вы будете решать для клиентов (или для себя).
+      </p>
+    </div>
+    
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
       <div class="rounded-xl border bg-card p-6 shadow-sm">
         <Badge variant="secondary" class="mb-2">Кейс #1 💼</Badge>
@@ -128,110 +360,254 @@ import HeroGallery from '../components/HeroGallery.astro';
         <p class="text-muted-foreground text-sm">Экономьте на моделях и фотостудиях. Создавайте уникальные карточки товаров с разными лицами для повышения продаж.</p>
       </div>
     </div>
+    
+    <div class="bg-card border rounded-xl p-6 mt-8">
+      <p class="text-muted-foreground leading-relaxed">
+        Эти кейсы — основа вашего портфолио. Вернёмся к ним в разделе про поиск клиентов.
+      </p>
+    </div>
   </SectionHeader>
 
   <!-- FUNCTIONALITY SECTION -->
-  <SectionHeader id="functionality" title="Что умеет наш бот" className="pt-4 md:pt-8">
-    <div class="space-y-12">
+  <SectionHeader id="functionality" title="🤖 Ваш рабочий инструмент — @nanobananas_bot" className="pt-4 md:pt-8">
+    <div class="space-y-8">
       
-      <!-- AI Models Section -->
-      <div>
-        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span class="text-3xl">🤖</span>
-          <span>Доступные нейросети</span>
-        </h3>
-        
-        <div class="grid gap-6 md:grid-cols-2">
-          <!-- Nano Banana Regular -->
-          <div class="rounded-xl border-2 border-primary/20 p-6 bg-card relative overflow-hidden hover:border-primary/40 transition-all">
-            <div class="absolute top-0 right-0 bg-primary/10 text-primary px-3 py-1 text-xs font-bold rounded-bl-lg">ПОПУЛЯРНАЯ</div>
-            <h4 class="text-xl font-bold mb-3">Nano Banana (Обычная)</h4>
-            <p class="text-sm text-muted-foreground mb-4">Флагманская модель Google Gemini 2.5 Flash Image. Идеально сохраняет черты лица, быстро работает (10-15 секунд), подходит для личных фото и экспериментов.</p>
-            <div class="flex items-center gap-2 text-xs text-muted-foreground">
-              <span class="bg-green-500/10 text-green-500 px-2 py-1 rounded">Быстро</span>
-              <span class="bg-blue-500/10 text-blue-500 px-2 py-1 rounded">Точность 96%</span>
-            </div>
-          </div>
+      <!-- Backstory -->
+      <div class="bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/20 rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Предыстория</h3>
+        <p class="text-muted-foreground leading-relaxed mb-4">
+          Мы с братом создали этого бота в ноябре 2024 года. Задача — дать доступ к лучшим нейросетям без VPN и сложных настроек.
+        </p>
+        <div class="bg-card/50 p-4 rounded-lg">
+          <p class="font-semibold mb-2">Сегодня:</p>
+          <ul class="space-y-1 text-sm text-muted-foreground">
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>85 000+ пользователей</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>2,8 млн ₽ общей выручки</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-primary font-bold">•</span>
+              <span>Рекорд оплат: 99 400₽ за день (25 декабря 2024)</span>
+            </li>
+          </ul>
+        </div>
+        <p class="text-muted-foreground mt-4 italic">
+          Вы получаете проверенный инструмент, которым пользуются десятки тысяч человек.
+        </p>
+      </div>
 
-          <!-- Nano Banana PRO -->
-          <div class="rounded-xl border-2 border-purple-500/30 p-6 bg-card relative overflow-hidden shadow-[0_0_20px_rgba(168,85,247,0.15)] hover:border-purple-500/50 transition-all">
-            <div class="absolute top-0 right-0 bg-purple-500 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">PRO</div>
-            <h4 class="text-xl font-bold mb-3 text-purple-400">Nano Banana PRO</h4>
-            <p class="text-sm text-muted-foreground mb-4">Усиленная версия с максимальной точностью. Безошибочно генерирует русский текст на изображениях, интегрирована с Google Search для актуальной информации. Идеальна для резюме, карточек товаров и бизнес-задач.</p>
-            <div class="flex items-center gap-2 text-xs text-muted-foreground">
-              <span class="bg-purple-500/10 text-purple-400 px-2 py-1 rounded">Текст на фото</span>
-              <span class="bg-blue-500/10 text-blue-400 px-2 py-1 rounded">Google Search</span>
-            </div>
+      <!-- Three main functions -->
+      <div class="bg-card border rounded-xl p-6">
+        <h3 class="text-xl font-bold mb-4">Три основные функции:</h3>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <div class="text-3xl mb-2">🎨</div>
+            <h4 class="font-bold mb-2">1. Генерация с нуля</h4>
+            <p class="text-sm text-muted-foreground">Создаёте изображения по описанию без исходного фото.</p>
           </div>
-
-          <!-- Seedream v4 -->
-          <div class="rounded-xl border-2 border-pink-500/20 p-6 bg-card relative overflow-hidden hover:border-pink-500/40 transition-all">
-            <h4 class="text-xl font-bold mb-3 text-pink-400">Seedream v4</h4>
-            <p class="text-sm text-muted-foreground mb-4">Специализируется на художественных и креативных стилях. Отлично подходит для создания арт-портретов и необычных концепций.</p>
-            <div class="flex items-center gap-2 text-xs text-muted-foreground">
-              <span class="bg-pink-500/10 text-pink-400 px-2 py-1 rounded">Креатив</span>
-              <span class="bg-orange-500/10 text-orange-400 px-2 py-1 rounded">Арт-стили</span>
-            </div>
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <div class="text-3xl mb-2">✂️</div>
+            <h4 class="font-bold mb-2">2. Редактирование фото</h4>
+            <p class="text-sm text-muted-foreground">Меняете одежду, фон, причёску. Лицо сохраняется на 98%!</p>
           </div>
-
-          <!-- Qwen Image -->
-          <div class="rounded-xl border-2 border-cyan-500/20 p-6 bg-card relative overflow-hidden hover:border-cyan-500/40 transition-all">
-            <h4 class="text-xl font-bold mb-3 text-cyan-400">Qwen Image</h4>
-            <p class="text-sm text-muted-foreground mb-4">Альтернативная модель с уникальной стилистикой. Попробуйте для разнообразия результатов.</p>
-            <div class="flex items-center gap-2 text-xs text-muted-foreground">
-              <span class="bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded">Альтернатива</span>
-              <span class="bg-teal-500/10 text-teal-400 px-2 py-1 rounded">Уникальный стиль</span>
-            </div>
+          <div class="bg-muted/30 p-4 rounded-lg">
+            <div class="text-3xl mb-2">🔗</div>
+            <h4 class="font-bold mb-2">3. Объединение изображений</h4>
+            <p class="text-sm text-muted-foreground">Совмещаете: одежду с одного фото, фон с другого, ваш портрет.</p>
           </div>
         </div>
       </div>
 
-      <!-- Features Section -->
-      <div>
-        <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <span class="text-3xl">✨</span>
-          <span>Что можно делать с фотографиями</span>
-        </h3>
-        
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 p-5 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all">
-            <div class="text-2xl mb-2">🎨</div>
-            <h4 class="font-bold mb-2">Генерация с нуля</h4>
-            <p class="text-sm text-muted-foreground">Создавайте любые изображения по текстовому описанию, даже без исходного фото.</p>
-          </div>
+      <!-- Models Table -->
+      <div class="bg-card border rounded-xl p-6 overflow-x-auto">
+        <h3 class="text-xl font-bold mb-4">Доступные нейросети:</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="text-left p-3 font-bold">Модель</th>
+                <th class="text-left p-3 font-bold">Особенности</th>
+                <th class="text-left p-3 font-bold">Когда использовать</th>
+                <th class="text-left p-3 font-bold">Бейдж</th>
+              </tr>
+            </thead>
+            <tbody class="text-muted-foreground">
+              <tr class="border-b border-border/50">
+                <td class="p-3 font-semibold">Nano Banana<br/>(обычная)</td>
+                <td class="p-3">
+                  • 1 генерация = 1 фото<br/>
+                  • Работает 10-15 сек<br/>
+                  • Точность 96%
+                </td>
+                <td class="p-3">
+                  • Быстрые правки<br/>
+                  • Тестирование идей<br/>
+                  • Личные фото
+                </td>
+                <td class="p-3"><span class="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold">🔥 ТОП</span></td>
+              </tr>
+              <tr class="border-b border-border/50">
+                <td class="p-3 font-semibold">Nano Banana PRO</td>
+                <td class="p-3">
+                  • 6 генераций за 1 фото<br/>
+                  • Русский текст на изображениях<br/>
+                  • Google Search интеграция
+                </td>
+                <td class="p-3">
+                  • Работа с клиентами<br/>
+                  • Карточки товаров<br/>
+                  • Деловые портреты
+                </td>
+                <td class="p-3"><span class="bg-purple-500/10 text-purple-400 px-2 py-1 rounded text-xs font-bold">👑 PRO</span></td>
+              </tr>
+              <tr class="border-b border-border/50">
+                <td class="p-3 font-semibold">Seedream v4</td>
+                <td class="p-3">
+                  • Художественные стили<br/>
+                  • Арт-портреты
+                </td>
+                <td class="p-3">
+                  • Креативные фото<br/>
+                  • Необычные концепции
+                </td>
+                <td class="p-3"><span class="bg-pink-500/10 text-pink-400 px-2 py-1 rounded text-xs font-bold">🎨 АРТ</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold">Qwen Image</td>
+                <td class="p-3">
+                  • Уникальная стилистика<br/>
+                  • Альтернативная обработка
+                </td>
+                <td class="p-3">
+                  • Разнообразие<br/>
+                  • Эксперименты
+                </td>
+                <td class="p-3"><span class="bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded text-xs font-bold">🔄 АЛТ</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-          <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-5 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all">
-            <div class="text-2xl mb-2">✂️</div>
-            <h4 class="font-bold mb-2">Редактирование фото</h4>
-            <p class="text-sm text-muted-foreground">Меняйте одежду, фон, причёску, добавляйте или убирайте объекты. Лицо сохраняется на 98+%!</p>
-          </div>
+      <!-- Difference between regular and PRO -->
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-card border rounded-xl p-6">
+          <h4 class="font-bold mb-3 flex items-center gap-2">
+            <span class="text-2xl">🔥</span>
+            <span>Nano Banana (обычная):</span>
+          </h4>
+          <ul class="space-y-2 text-sm text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <span class="text-primary">•</span>
+              <span>1 вариант фото</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary">•</span>
+              <span>Базовые возможности</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-primary">•</span>
+              <span>Для личного использования</span>
+            </li>
+          </ul>
+        </div>
 
-          <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 p-5 rounded-xl border border-green-500/20 hover:border-green-500/40 transition-all">
-            <div class="text-2xl mb-2">🔗</div>
-            <h4 class="font-bold mb-2">Объединение изображений</h4>
-            <p class="text-sm text-muted-foreground">Совместите несколько фото: одежду с одного, фон с другого, и свой портрет.</p>
-          </div>
+        <div class="bg-gradient-to-br from-purple-500/5 to-purple-500/10 border-2 border-purple-500/30 rounded-xl p-6">
+          <h4 class="font-bold mb-3 flex items-center gap-2">
+            <span class="text-2xl">👑</span>
+            <span>Nano Banana PRO:</span>
+          </h4>
+          <ul class="space-y-2 text-sm text-muted-foreground">
+            <li class="flex items-start gap-2">
+              <span class="text-purple-400">•</span>
+              <span>6 вариантов на выбор</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-400">•</span>
+              <span>Русский текст на фото (надписи, вывески)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-400">•</span>
+              <span>Google Search — знает актуальную информацию</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-400">•</span>
+              <span>Точнее понимает сложные промпты</span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-          <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 p-5 rounded-xl border border-orange-500/20 hover:border-orange-500/40 transition-all">
-            <div class="text-2xl mb-2">📐</div>
-            <h4 class="font-bold mb-2">Разные форматы</h4>
-            <p class="text-sm text-muted-foreground">JPG, PNG, WebP. Квадратные для соцсетей, вертикальные для сторис, горизонтальные для баннеров.</p>
+      <!-- When to use PRO -->
+      <div class="bg-card border rounded-xl p-6">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <h4 class="font-bold mb-3 text-purple-400">Когда нужна PRO:</h4>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✅</span>
+                <span>Работа с клиентами (показать варианты)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✅</span>
+                <span>Карточки товаров (надписи на русском)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✅</span>
+                <span>Деловые портреты (максимальная точность)</span>
+              </li>
+            </ul>
           </div>
-
-          <div class="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 p-5 rounded-xl border border-yellow-500/20 hover:border-yellow-500/40 transition-all">
-            <div class="text-2xl mb-2">🎯</div>
-            <h4 class="font-bold mb-2">Баннеры и креативы</h4>
-            <p class="text-sm text-muted-foreground">Рекламные баннеры, обложки YouTube, посты для соцсетей, карточки товаров для маркетплейсов.</p>
+          <div>
+            <h4 class="font-bold mb-3">Когда достаточно обычной:</h4>
+            <ul class="space-y-2 text-sm text-muted-foreground">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✅</span>
+                <span>Личные фото</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✅</span>
+                <span>Обучение и эксперименты</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✅</span>
+                <span>Тестирование идей</span>
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-lg font-semibold">Теперь к практике — как работать с инструментом для результата на уровне профессионала 👇</p>
+      </div>
+    </div>
+
+      <!-- Intro before Library -->
+      <div class="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-6 mt-8">
+        <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+          <span class="text-2xl">✨</span>
+          <span>Готовые решения для работы</span>
+        </h3>
+        <p class="text-muted-foreground leading-relaxed mb-3">
+          Прежде чем учиться писать промпты с нуля — посмотрим готовые.
+        </p>
+        <p class="text-muted-foreground leading-relaxed mb-3">
+          250+ проверенных промптов по 12 категориям. Доступны в боте в разделе "Идеи и тренды".
+        </p>
+        <p class="font-semibold">Два способа использовать:</p>
       </div>
 
       <!-- Prompt Library Section -->
-      <div class="glass-card p-8 rounded-2xl border-2 border-primary/30">
+      <div class="glass-card p-8 rounded-2xl border-2 border-primary/30 mt-6">
         <div class="flex flex-col items-center gap-4 mb-8">
           <h3 class="text-2xl font-bold flex items-center gap-3 text-center">
             <span class="text-3xl">💎</span>
-            <span>Библиотека готовых решений</span>
+            <span>Библиотека готовых промтов</span>
           </h3>
           
           <button id="video-guide-btn" class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white rounded-full text-sm font-bold transition-all border border-red-500/20 shadow-sm hover:shadow-md group">
@@ -245,10 +621,14 @@ import HeroGallery from '../components/HeroGallery.astro';
             <div class="flex items-center gap-3 mb-4">
               <div class="bg-primary/10 text-primary px-4 py-2 rounded-lg font-bold text-2xl">250+</div>
               <div>
-                <h4 class="font-bold">Готовых промтов</h4>
+                <h4 class="font-bold">Бесплатных готовых промтов</h4>
                 <p class="text-sm text-muted-foreground">В мини-аппке бота</p>
               </div>
             </div>
+            <a href="https://t.me/nanobananas_bot" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg transition-colors font-semibold text-sm mb-3">
+              <span>🤖</span>
+              <span>Открыть бота</span>
+            </a>
             <p class="text-sm text-muted-foreground mb-3">Просто выбирайте категорию (стили, фоны, портреты, фотосессии) и копируйте готовый промт.</p>
             
             <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-lg mb-3">
@@ -352,7 +732,24 @@ import HeroGallery from '../components/HeroGallery.astro';
   </SectionHeader>
 
   <!-- RULES SECTION - COMPREHENSIVE BEST PRACTICES -->
-  <SectionHeader id="rules" title="🎯 Полное руководство по созданию промтов" className="pt-4 md:pt-8">
+  <SectionHeader id="rules" title="📚 Правила и секреты качественной работы" className="pt-4 md:pt-8">
+    <div class="bg-gradient-to-br from-orange-500/5 to-red-500/5 border-2 border-orange-500/20 rounded-xl p-6 mb-8">
+      <h3 class="text-xl font-bold mb-4">Самое важное.</h3>
+      <p class="text-muted-foreground leading-relaxed mb-4">
+        Всем клиентам критично: чтобы на фото сохранялось лицо (или продукт).
+      </p>
+      <p class="text-muted-foreground leading-relaxed mb-4">
+        Ниже — правила, советы, лайфхаки для результата 96%+.
+      </p>
+      <div class="bg-card/50 p-4 rounded-lg">
+        <p class="font-bold mb-2">Главное:</p>
+        <p class="text-lg font-semibold mb-2">ИИ не дурак. Он всё знает и умеет.</p>
+        <p class="text-muted-foreground">
+          Если результат не тот — вы неправильно сформулировали задачу.
+          Не переживайте. Пробуйте ещё. Сейчас научитесь формулировать правильно.
+        </p>
+      </div>
+    </div>
     <div class="space-y-8">
       
       <!-- Golden Rules -->
