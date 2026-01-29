@@ -1,0 +1,241 @@
+---
+// Галерея с SEO-оптимизированными описаниями для каждого изображения
+const images = [
+  { src: '/images/results/prompt-17.jpg', alt: 'Нейрофотосессия женщины в стильной куртке - уличная мода AI' },
+  { src: '/images/results/prompt-45.jpg', alt: 'Профессиональное фото мужчины для LinkedIn - деловой стиль AI' },
+  { src: '/images/results/prompt-94.jpg', alt: 'Нейрофото женщины в винтажном стиле - ретро фотосессия AI' },
+  { src: '/images/results/prompt-7.jpg', alt: 'AI фотосессия женщины в элегантном образе - профессиональный портрет' },
+  { src: '/images/results/prompt-72.jpg', alt: 'AI фото ребенка в праздничном наряде - семейная фотосессия' },
+  { src: '/images/results/prompt-26.jpg', alt: 'Нейрофото девушки в романтическом стиле - нежная AI фотосессия' },
+  { src: '/images/results/prompt-50.jpg', alt: 'Нейрофото мужчины в спортивной одежде - активный lifestyle AI' },
+  { src: '/images/results/prompt-13.jpg', alt: 'AI фотосессия девушки в вечернем платье - гламурный стиль' },
+  { src: '/images/results/prompt-84.jpg', alt: 'Детский портрет в сказочном стиле - креативная AI фотосессия' },
+  { src: '/images/results/prompt-2.jpg', alt: 'AI фотосессия девушки в элегантном новогоднем платье с праздничными огнями' },
+  { src: '/images/results/prompt-58.jpg', alt: 'Нейрофото мужчины в уличном стиле - urban фотосессия AI' },
+  { src: '/images/results/prompt-95.jpg', alt: 'Профессиональное AI фото девушки в модном образе - fashion стиль' },
+  { src: '/images/results/prompt-20.jpg', alt: 'AI портрет девушки в casual стиле - повседневная фотосессия' },
+  { src: '/images/results/prompt-42.jpg', alt: 'Нейрофото мужчины в офисе - бизнес портрет созданный AI' },
+  { src: '/images/results/prompt-8.jpg', alt: 'Нейрофото женщины в стильном образе - современная AI фотосессия' },
+  { src: '/images/results/prompt-93.jpg', alt: 'AI фотосессия девушки в романтическом образе - нежный стиль' },
+  { src: '/images/results/prompt-48.jpg', alt: 'Профессиональный портрет мужчины - деловая AI фотосессия' },
+  { src: '/images/results/prompt-21.jpg', alt: 'Нейрофото девушки в зимнем образе - уютная AI фотосессия' },
+  { src: '/images/results/prompt-100.jpg', alt: 'Нейрофото женщины в деловом стиле - корпоративный портрет AI' },
+  { src: '/images/results/prompt-14.jpg', alt: 'Нейрофото женщины в спортивной одежде - активный образ жизни AI' },
+  { src: '/images/results/prompt-51.jpg', alt: 'AI портрет мужчины в кожаной куртке - стильная фотосессия' },
+  { src: '/images/results/prompt-36.jpg', alt: 'AI фотосессия женщины в творческом образе - художественный портрет' },
+  { src: '/images/results/prompt-46.jpg', alt: 'Нейрофото мужчины в casual стиле - современный AI портрет' },
+];
+---
+
+<div class="gallery-wrapper">
+  <div class="gallery-track">
+    {/* Первый набор */}
+    {images.map((image) => (
+      <div class="gallery-item">
+        <img src={image.src} alt={image.alt} loading="lazy" />
+        <div class="gallery-overlay">
+          <span class="gallery-icon">🔍</span>
+        </div>
+      </div>
+    ))}
+    {/* Дубликат для бесшовной прокрутки */}
+    {images.map((image) => (
+      <div class="gallery-item">
+        <img src={image.src} alt={image.alt} loading="lazy" />
+        <div class="gallery-overlay">
+          <span class="gallery-icon">🔍</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    function openModal(imageSrc) {
+      const modal = document.createElement('div');
+      modal.className = 'gallery-modal';
+      Object.assign(modal.style, {
+        position: 'fixed',
+        inset: '0',
+        zIndex: '9999',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: '0',
+        transition: 'opacity 0.3s ease'
+      });
+      
+      const overlay = document.createElement('div');
+      Object.assign(overlay.style, {
+        position: 'absolute',
+        inset: '0',
+        background: 'rgba(0, 0, 0, 0.85)',
+        backdropFilter: 'blur(8px)',
+        cursor: 'pointer'
+      });
+      
+      const img = document.createElement('img');
+      img.src = imageSrc;
+      Object.assign(img.style, {
+        maxWidth: 'min(600px, 90vw)', // Компактный размер: максимум 600px или 90% ширины экрана
+        maxHeight: '70vh',            // Не на всю высоту, оставляем воздух
+        objectFit: 'contain',
+        borderRadius: '12px',
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+        transform: 'scale(0.9)',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        position: 'relative',
+        zIndex: '10000',
+        pointerEvents: 'none'
+      });
+      // Разрешим клик по картинке не закрывать модалку, а клик по фону - закрывать
+      img.style.pointerEvents = 'auto';
+
+      modal.appendChild(overlay);
+      modal.appendChild(img);
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+
+      // Анимация появления
+      requestAnimationFrame(() => {
+        modal.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      });
+
+      const closeModal = () => {
+        modal.style.opacity = '0';
+        img.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          if (modal.parentNode) document.body.removeChild(modal);
+          document.body.style.overflow = '';
+        }, 300);
+      };
+
+      overlay.addEventListener('click', closeModal);
+      
+      // Закрытие по Esc
+      const escHandler = (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+          document.removeEventListener('keydown', escHandler);
+        }
+      };
+      document.addEventListener('keydown', escHandler);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        item.addEventListener('click', (e) => {
+          const img = item.querySelector('img');
+          if (img && img.src) {
+            openModal(img.src);
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+<style>
+  .gallery-wrapper {
+    width: 100%;
+    max-width: 1024px; /* Ограничение ширины (max-w-5xl) */
+    margin: 0 auto;    /* Центрирование */
+    overflow: hidden;
+    position: relative;
+    padding: 1.5rem 0;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .gallery-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 120s linear infinite;
+    padding-left: 1.5rem; /* Компенсация маски */
+  }
+
+  /* Пауза при наведении */
+  .gallery-wrapper:hover .gallery-track {
+    animation-play-state: paused;
+  }
+
+  .gallery-item {
+    flex-shrink: 0;
+    width: 200px;  /* Горизонтальный формат, компактный */
+    height: 140px; /* Горизонтальный формат, компактный */
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 24px -10px rgba(0,0,0,0.2);
+    z-index: 10;
+    border-color: var(--primary);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-icon {
+    font-size: 1.5rem;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .gallery-item:hover .gallery-icon {
+    transform: scale(1);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-item {
+      width: 160px;
+      height: 110px;
+    }
+    .gallery-track {
+      gap: 1rem;
+      animation-duration: 80s;
+    }
+  }
+</style>

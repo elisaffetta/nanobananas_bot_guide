@@ -1,0 +1,107 @@
+---
+// ThemeToggle.astro
+---
+<button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+  <svg id="sun-icon" class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2"/>
+    <path d="M12 20v2"/>
+    <path d="m4.93 4.93 1.41 1.41"/>
+    <path d="m17.66 17.66 1.41 1.41"/>
+    <path d="M2 12h2"/>
+    <path d="M20 12h2"/>
+    <path d="m6.34 17.66-1.41 1.41"/>
+    <path d="m19.07 4.93-1.41 1.41"/>
+  </svg>
+  <svg id="moon-icon" class="theme-icon moon-icon hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+  </svg>
+</button>
+
+<script>
+  function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const htmlElement = document.documentElement;
+    
+    if (!themeToggle || !sunIcon || !moonIcon) return;
+    
+    function updateIcons() {
+      if (!sunIcon || !moonIcon) return;
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      }
+    }
+    
+    // Initialize icons based on current theme
+    updateIcons();
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      htmlElement.classList.toggle('dark', newTheme === 'dark');
+      localStorage.setItem('theme', newTheme);
+      
+      updateIcons();
+    });
+  }
+  
+  // Initialize immediately if DOM is ready, otherwise wait
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeToggle);
+  } else {
+    initThemeToggle();
+  }
+</script>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .theme-toggle:hover {
+    background: var(--muted);
+  }
+  
+  .theme-icon {
+    transition: all 0.3s ease;
+    color: var(--foreground);
+  }
+  
+  /* Light theme - show sun */
+  [data-theme="light"] .sun-icon {
+    color: #ffd60a;
+  }
+  
+  [data-theme="light"] .theme-toggle:hover .sun-icon {
+    transform: rotate(45deg) scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(255, 214, 10, 0.5));
+  }
+  
+  /* Dark theme - show moon */
+  [data-theme="dark"] .moon-icon {
+    color: #00d4ff;
+  }
+  
+  [data-theme="dark"] .theme-toggle:hover .moon-icon {
+    transform: rotate(-15deg) scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+  }
+</style>
